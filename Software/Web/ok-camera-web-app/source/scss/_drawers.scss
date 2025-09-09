@@ -1,0 +1,102 @@
+// MUSTRA DRAWERS
+//
+
+.drawer {
+  width: $drawer-width-sm;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  visibility: hidden;
+  transform: translate3d(-110%, 0, 0);
+  transition: transform $transition-duration-base, visibility $transition-duration-base;
+  z-index: $zindex-drawer;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  background-color: $color-primary;
+  color: $color-light;
+  font-size: $font-size-sm;
+  outline: 0;
+  box-shadow: $box-shadow-base-right;
+
+  @media (min-width: $screen-sm) {
+    width: $drawer-width-md;
+  }
+
+  @media (min-width: $screen-md) {
+    width: $drawer-width;
+  }
+
+  &.drawer-left {
+    right: auto;
+    left: 0;
+  }
+
+  &.drawer-right {
+    left: auto;
+    right: 0;
+    transform: translate3d(110%, 0, 0);
+  }
+
+  // When visible
+  &.show {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// Content
+.drawer-content {
+  width: 100%;
+  height: 100%;
+  padding: $grid-gutter;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate3d(-110%, 0, 0);
+  transition: transform $transition-duration-base .1s;
+  overflow-y: auto;
+
+  // When visible
+  .show & {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// Close link/button
+.drawer-close {
+  display: block;
+  width: $drawer-close-size;
+  height: $drawer-close-size;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: $drawer-close-padding;
+  fill: $color-light;
+  opacity: 0;
+  transform: translate3d(110%, 0, 0);
+  transition: opacity $transition-duration-base .3s, transform $transition-duration-base .3s;
+  z-index: $zindex-drawer-close;
+
+  // Fix icon and add transition
+  svg,
+  .icon {
+    display: block;
+    transition: transform $transition-duration-fast;
+  }
+
+  &:hover,
+  &:focus {
+    svg,
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  // When visible
+  .show & {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

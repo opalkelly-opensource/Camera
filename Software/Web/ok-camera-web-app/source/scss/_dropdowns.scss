@@ -1,0 +1,59 @@
+// MUSTRA DROPDOWNS
+//
+// https://getbootstrap.com/docs/4.1/components/dropdowns/
+
+// Container
+.dropdown {
+  position: relative;
+  margin-bottom: 0;
+}
+
+// Toggle
+.dropdown-toggle {
+  .show &.button {
+    transform: translateY(6px) !important;
+  }
+
+  .show &.button-primary {
+    background-color: $color-primary;
+    color: $color-light;
+  }
+}
+
+// Menu
+.dropdown-menu {
+  @extend .list-unstyled;
+  margin-bottom: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 170px;
+  max-height: 40vh;
+  background-color: $color-light;
+  box-shadow: $box-shadow-base;
+  background-clip: padding-box;
+  overflow-y: auto;
+  transition: all $transition-duration-fast $transition-easing;
+  z-index: $zindex-dropdown;
+  display: none;
+
+  .dropdown.show &,
+  &.show {
+    display: block;
+  }
+
+  &.dropdown-menu-full-width {
+    right: 0;
+  }
+}
+
+// Menu item
+.dropdown-item {
+  display: block;
+  padding: $grid-gutter / 2;
+
+  &:focus,
+  &:hover {
+    background-color: $color-shaded;
+  }
+}

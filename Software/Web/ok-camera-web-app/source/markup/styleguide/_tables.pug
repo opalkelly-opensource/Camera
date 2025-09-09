@@ -1,0 +1,85 @@
+section.styleguide-section#s-tables
+  +sectionHeading("Tables")
+
+  .row
+    .col-sm-8
+      .table-responsive-wrapper.mb-md
+        table.table
+          caption Table caption (with responsive wrapper)
+          tfoot
+            tr
+              td(colspan="4") Table footer.
+          thead
+            tr
+              th Header
+              th Header
+              th Header
+              th Header
+          tbody
+            tr
+              td Longer Cell Content
+              td Longer Cell Content
+              td Longer Cell Content
+              td Longer Cell Content
+            tr
+              td Cell
+              td Cell
+              td Cell
+              td Cell
+
+      table.table.table-responsive.mb-md
+        caption Table caption (with responsive class)
+        tfoot
+          tr
+            td(colspan="4") Table footer.
+        thead
+          tr
+            th Header
+            th Header
+            th Header
+            th Header
+        tbody
+          tr
+            td(data-label="Header") Cell
+            td(data-label="Header") Cell
+            td(data-label="Header") Cell
+            td(data-label="Header") Cell
+          tr
+            td(data-label="Header") Cell
+            td(data-label="Header") Cell
+            td(data-label="Header") Cell
+            td(data-label="Header") Cell
+
+      table.table.table-datatable
+        caption Datatables
+        tfoot
+          tr
+            td(colspan="4") Fig. 3.4.
+        thead
+          tr
+            th Header
+            th Header
+            th Header
+            th.txtr.highlight Num.
+        tbody
+          tr
+            td Cell
+            td Cell
+            td Cell
+            td.txtr.num.highlight
+              span.left $
+              | 19.99
+          tr
+            td Cell
+            td Cell
+            td Cell
+            td.txtr.num.highlight
+              span.left $
+              | 123.45
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Tables
+        p Tables come in two formats: standard tables (e.g. when you need to present tabular data in longform text), and datatables (e.g. when you want to present something spreadsheet-like).
+        p The <sode>.num</sode> class, coupled with the <code>.txtr</code> class can be pretty useful within tables when dealing with numbers and you need the figures to line up.
+        p Table "responsiveness" can be achieved in 2 ways: by adding a wrapper element around the table with class <code>.table-responsive-wrapper</code>, or by adding <code>.table-responsive</code> class to the <code>table</code> element.

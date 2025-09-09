@@ -1,0 +1,40 @@
+section.styleguide-section#s-collapse
+  +sectionHeading("Collapse & Accordion")
+
+  .row
+    .col-sm-8
+      a(href="#collapseExample" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample").collapsed
+        span Toggle content
+
+      .collapse#collapseExample
+        .box.box-default.mt-base Some hidden content
+
+    .col-sm-4
+      .styleguide-content
+        p Bootstrap collapse implementation.
+
+  .row.mt-lg
+    .col-sm-8
+
+      #accordion
+        +accordion("collapseOne", "Collapsible Group Item #1", "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore", "#accordion", true)
+
+        +accordion("collapseTwo", "Collapsible Group Item #2", "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore", "#accordion")
+
+        +accordion("collapseThree", "Collapsible Group Item #3", "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore", "#accordion")
+
+    .col-sm-4
+      .styleguide-content
+        p Bootstrap collapse implementation for accordion.
+
+  .row.mt-lg
+    .col-sm-8
+      a(href="#collapseToggleExample" data-toggle="collapse" aria-expanded="false" aria-controls="collapseToggleExample" role="button").collapsed
+        span.collapsed-text Show Contents
+        span.expanded-text Hide Contents
+      .collapse#collapseToggleExample
+        .box.box-default.mt-base This is a state-content toggler that switches the text when you expand the content.
+
+    .col-sm-4
+      .styleguide-content
+        p Use this component when you need to have a trigger element (e.g. a button) that toggles the visibility of another element's contents (e.g. a list of things), and you also need to change the toggler element's content to reflect the state of the target element.

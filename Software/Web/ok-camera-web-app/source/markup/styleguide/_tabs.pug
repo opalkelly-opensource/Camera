@@ -1,0 +1,30 @@
+section.styleguide-section#s-tabs
+  +sectionHeading("Tabs")
+
+  .row
+    .col-sm-8
+      //- Use this selector for switching tabs on smaller screens
+      .mb-base.hidden-sm-up
+        select.js-tab-selector.form-control
+          option(value="#content-1") Tab 1
+          option(value="#content-2") Tab 2
+          option(value="#content-3") Tab 3
+
+      //- Class `.nav` has to be present because of the Bootstrap's JS library
+      //- If you use tab selector add class `.hidden-sm-down` to hide tabs on smaller screens
+      ul.tabs.nav.hidden-sm-down(role="tablist")
+        li.active
+          a.tab(href="#content-1", data-toggle="tab" role="tab", aria-controls="tab-1", aria-selected="true", id="tab-1") Tab 1
+        li
+          a.tab(href="#content-2", data-toggle="tab" role="tab" aria-controls="tab-2" aria-selected="false" id="tab-2") Tab 2
+        li
+          a.tab(href="#", data-toggle="tab", data-target="#content-3", role="tab", aria-controls="tab-3", aria-selected="false", id="tab-3") Tab 3
+
+      .tab-content
+        .tab-pane.fade.in.active(role="tabpanel", id="content-1", aria-labelledby="tab-1") ... tab 1 ...
+        .tab-pane.fade(role="tabpanel", id="content-2", aria-labelledby="tab-2") ... tab 2 ...
+        .tab-pane.fade(role="tabpanel", id="content-3", aria-labelledby="tab-3") ... tab 3 ...
+
+    .col-sm-4
+      .styleguide-content
+        p Bootstrap tabs implementation with support for history API and accessibility features.

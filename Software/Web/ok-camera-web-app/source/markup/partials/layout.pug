@@ -1,0 +1,16 @@
+doctype html
+
+html(lang="en", prefix="og: http://ogp.me/ns#")
+
+  include _variables
+
+  include _mixins
+
+  include _header
+
+  body(itemscope, itemtype="http://schema.org/WebPage")
+
+    block content
+      p Your content goes here.
+
+    include _footer

@@ -1,0 +1,137 @@
+extends partials/layout
+
+append meta
+  - var title = "Configured camera-xem7310.bit";
+  - var useDotHTMLExtension = false;
+
+block content
+
+  .control-toggle
+    a.button.button-sm(href="#" data-toggle="controls")
+      img(src="assets/images/icon-controls.svg" alt="Controls")
+
+  .content
+    .content-primary
+
+      main.output
+        
+        canvas.output-figure(width="600" height="400" style="background-color: tomato;")
+        //- .tab-content
+        //-   #output-locked.tab-pane.fade.active.show(role="tabpanel")
+        //-     canvas.output-figure(width="600" height="400" style="background-color: tomato;")
+        //-   #output-aspect.tab-pane.fade(role="tabpanel") Aspect
+        //-   #output-crop.tab-pane.fade(role="tabpanel") Crop
+      
+      .log#log
+        .log-content
+          a.toggle-log(href="#" data-toggle="log")
+            img(src="assets/images/icon-log-toggle.svg" alt="toggle log" title="toggle log")
+          h2.log-title Log Output
+          pre.log-content-main this is the log's preformatted content
+
+    aside.content-secondary#controls
+      .p-h-gutter
+        .server-status
+          a(href="/").page-header-logo
+            img(src="assets/images/ok-camera-logo.png", width="197", height="70", alt="OK Camera by Opal Kelly")
+            img.led(src="assets/images/led.svg" width="8" height="8" alt="led")
+            .sk-chase
+              .sk-chase-dot
+              .sk-chase-dot
+              .sk-chase-dot
+              .sk-chase-dot
+              .sk-chase-dot
+              .sk-chase-dot
+
+        hr
+
+        .flex.flex-space-between
+          .status.mr-base.flex.flex-valign-middle
+            img.mr-sm(src="assets/images/status-connected.svg" alt="")
+            span.text-sm.text-quiet.ellip.ellip-server(title="insert full address here") wss://localhost:9999/
+
+          .action.flex-valign-middle
+            //- a.button.button-gradient.button-sm(href="#") Reset
+            button(type="submit" title="disconnect").disconnect
+
+      .p-h-gutter
+        .form-horizontal
+          .form-group
+            .row
+              .col-xs-6
+                label.form-control-label Device
+              .col-xs-6
+                select.form-control
+                  option 1932000RCK
+
+      .p-h-gutter
+        hr
+
+      .p-h-gutter
+        .mt-base
+          dl.text-monospace
+            .flex.flex-space-between
+              dt.txtr.w-50 FPS:
+              dd.w-50 100
+            .flex.flex-space-between
+              dt.txtr.w-50 Missed Frames:
+              dd.w-50 0
+        .mt-base.flex.flex-center
+          a.button.button-gradient.button-sm(href="#") Capture
+          a.button.button-gradient.button-sm.ml-base(href="#") CMOS Reset
+
+        .mt-base.flex.flex-space-between.flex-valign-middle
+          .form-toggle
+            .toggle-bg
+                input(type="radio" name="capture" value="capture-single")
+                input(type="radio" name="capture" value="capture-continuous")
+                .switch
+            .toggle-label Continuous
+          .form-toggle
+            .toggle-bg
+                input(type="radio" name="aspect-ratio" value="scaled")
+                input(type="radio" name="aspect-ratio" value="actual")
+                .switch
+            .toggle-label 1:1
+
+      .p-h-gutter
+        hr
+
+      .p-h-gutter
+        form(action="")
+          .form-group
+            .row
+              .col-xs-6
+                label.form-control-label Exposure
+                input.form-control(type="text" value="2000")
+              .col-xs-6
+                label.form-control-label Display Mode
+                select.form-control
+                  option RGB
+          .form-group
+            .row
+              .col-xs-6
+                label.form-control-label Capture Size
+                input.form-control(type="text" value="1296 × 972")
+              .col-xs-6
+                label.form-control-label Capture Mode
+                select.form-control
+                  option Image
+
+      .p-h-gutter
+        hr
+
+        .form-group
+          label.form-control-label Frame Buffer Depth (max = 1500 frames)
+          .range-with-values
+            span.range-min Min
+            span.range-slider
+              input(type="range" min="0" max="100")
+            span.range-max 100%
+        .form-group.mt-md
+          label.form-control-label Current Buffer Level (723 frames)
+          .progress-bar
+            .progress-bar-min 0
+            .progress-bar-track
+              .progress-bar-value(style="width: 27%" title="27%")
+            .progress-bar-max 100%

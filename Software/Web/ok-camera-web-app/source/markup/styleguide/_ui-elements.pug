@@ -1,0 +1,49 @@
+section.styleguide-section#s-ui-elements
+  +sectionHeading("UI elements")
+
+  .row.mb-xl
+    .col-sm-8
+      h3 Server statuses
+      .server-status
+        .status 
+          img.mr-sm(src="assets/images/status-connected.svg" alt="")
+          | Connected to wss://tobias.ok:9999
+        .action.ml-base
+          a.button.button-gradient.button-sm(href="#") Disconnect
+
+      .server-status
+        .status 
+          img.mr-sm(src="assets/images/status-disconnected.svg" alt="")
+          | Disconnected from wss://tobias.ok:9999
+        .action.ml-base
+          a.button.button-gradient.button-sm(href="#") Connect
+
+      .server-status
+        .status 
+          img.mr-sm(src="assets/images/status-connected.svg" alt="")
+          | Configured camera-xem7310.bit
+        .action.ml-base
+          a.button.button-gradient.button-sm(href="#") Reset
+
+      .server-status
+        .status 
+          img.mr-sm(src="assets/images/status-connected.svg" alt="")
+          | Ready Missed Frame: 0
+        .action.ml-base
+          a.button.button-gradient.button-sm(href="#") CMOS Reset
+
+    .col-sm-4
+      .styleguide-content
+        p This is what we use to display the status of the server.
+  
+  .row
+    .col-sm-8
+      h3 Progress bars
+      .progress-bar
+        .progress-bar-min 0
+        .progress-bar-track
+          .progress-bar-value(style="width: 27%;" data-value="27")
+        .progress-bar-max 100
+    .col-sm-4
+      .styleguide-content
+        p The progress bar is meant to be controlled programatically by dynamically adjusting the value of the width property within the #[code style] attribute, as well as updating the value of the #[code data-value] attribute. 

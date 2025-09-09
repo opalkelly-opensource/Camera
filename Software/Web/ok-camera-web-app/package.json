@@ -1,0 +1,70 @@
+{
+  "name": "mustra",
+  "version": "2.0.0",
+  "description": "Front-End starter kit by Superawesome.",
+  "keywords": [
+    "front-end",
+    "starter kit",
+    "html boilerplate"
+  ],
+  "author": "Dragan Babic <dragan@sprawsm.com>",
+  "contributors": [
+    {
+      "name": "Dragan Babic",
+      "url": "http://sprawsm.com/",
+      "email": "dragan@sprawsm.com"
+    },
+    {
+      "name": "Milan Stosic",
+      "url": "http://sprawsm.com/",
+      "email": "milan@sprawsm.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/sprawsm/mustra"
+  },
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.0",
+    "slick-carousel": "^1.8.*",
+    "svg4everybody": "^2.1.*"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.*",
+    "babel-core": "^6.26.*",
+    "babel-preset-env": "^1.7.*",
+    "browser-sync": "^2.26.7",
+    "colors": "^1.4.0",
+    "del": "^3.0.*",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^5.0.*",
+    "gulp-babel": "^7.0.*",
+    "gulp-concat": "^2.6.*",
+    "gulp-imagemin": "^4.1.*",
+    "gulp-newer": "^1.4.*",
+    "gulp-notify": "^3.2.*",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^4.0.*",
+    "gulp-real-favicon": "^0.3.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-rsync": "^0.0.*",
+    "gulp-sass": "^4.1.0",
+    "gulp-size": "^3.0.*",
+    "gulp-svgmin": "^1.2.*",
+    "gulp-svgstore": "^6.1.*",
+    "gulp-uglify": "^3.0.2",
+    "imagemin-gifsicle": "^5.2.*",
+    "imagemin-jpegtran": "^5.0.*",
+    "imagemin-optipng": "^5.2.*",
+    "imagemin-svgo": "^6.0.*",
+    "path": "^0.12.*",
+    "popper.js": "^1.16.1",
+    "vinyl": "^2.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-file": "^2.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

@@ -1,0 +1,16 @@
+section.styleguide-section#s-drawers
+  +sectionHeading("Drawers")
+
+  .row
+    .col-sm-8
+      a(href="#my-drawer", data-toggle="drawer") Toggle drawer
+    .col-sm-4
+      .styleguide-content
+        p Custom drawer with support for left (<code>.drawer-left</code> and by default), and right (<code>.drawer-right)</code>) placement.
+
+aside.drawer.drawer-left#my-drawer(role="menu", aria-label="My Drawer", tabindex="-1")
+  a.drawer-close(href="#", data-dismiss="drawer" aria-label="Close")
+    +icon("cross")
+
+  .drawer-content.scrollfix
+    p This is a drawer.

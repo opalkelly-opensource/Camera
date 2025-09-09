@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <title>Mustra - Configured camera-xem7310.bit</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="The front-end starter kit from Superawesome">
+    <meta name="author" content="sprawsm.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://www.sprawsm.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mustra - Configured camera-xem7310.bit">
+    <meta property="og:description" content="The front-end starter kit from Superawesome">
+    <meta property="og:site_name" content="Mustra">
+    <meta property="og:image" content="https://www.sprawsm.com/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="fb:admins" content="">
+    <meta property="fb:app_id" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@sprawsm">
+    <meta name="twitter:author" content="@sprawsm">
+    <meta name="twitter:creator" content="@sprawsm">
+    <meta name="twitter:title" content="Mustra - Configured camera-xem7310.bit">
+    <meta name="twitter:description" content="The front-end starter kit from Superawesome">
+    <meta name="twitter:image" content="https://www.sprawsm.com/assets/images/og-image.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons//apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons//favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
+    <link rel="manifest" href="assets/images/favicons//site.webmanifest">
+    <link rel="mask-icon" href="assets/images/favicons//safari-pinned-tab.svg" color="#0075FF">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="dns-prefetch" href="//sprawsm.com">
+    <link rel="dns-prefetch" href="//use.typekit.net">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <div class="control-toggle"><a class="button button-sm" href="#" data-toggle="controls"><img src="assets/images/icon-controls.svg" alt="Controls"></a></div>
+    <div class="content">
+      <div class="content-primary">
+        <main class="output">
+          <canvas class="output-figure" width="600" height="400" style="background-color: tomato;"></canvas>
+        </main>
+        <div class="log" id="log">
+          <div class="log-content"><a class="toggle-log" href="#" data-toggle="log"><img src="assets/images/icon-log-toggle.svg" alt="toggle log" title="toggle log"></a>
+            <h2 class="log-title">Log Output</h2>
+            <pre class="log-content-main">this is the log's preformatted content</pre>
+          </div>
+        </div>
+      </div>
+      <aside class="content-secondary" id="controls">
+        <div class="p-h-gutter">
+          <div class="server-status"><a class="page-header-logo" href="/"><img src="assets/images/ok-camera-logo.png" width="197" height="70" alt="OK Camera by Opal Kelly"><img class="led" src="assets/images/led.svg" width="8" height="8" alt="led">
+              <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+              </div></a></div>
+          <hr>
+          <div class="flex flex-space-between">
+            <div class="status mr-base flex flex-valign-middle"><img class="mr-sm" src="assets/images/status-connected.svg" alt=""><span class="text-sm text-quiet ellip ellip-server" title="insert full address here">wss://localhost:9999/</span></div>
+            <div class="action flex-valign-middle">
+              <button class="disconnect" type="submit" title="disconnect"></button>
+            </div>
+          </div>
+        </div>
+        <div class="p-h-gutter">
+          <div class="form-horizontal">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-6">
+                  <label class="form-control-label">Device</label>
+                </div>
+                <div class="col-xs-6">
+                  <select class="form-control">
+                    <option>1932000RCK</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-h-gutter">
+          <hr>
+        </div>
+        <div class="p-h-gutter">
+          <div class="mt-base">
+            <dl class="text-monospace">
+              <div class="flex flex-space-between">
+                <dt class="txtr w-50">FPS:</dt>
+                <dd class="w-50">100</dd>
+              </div>
+              <div class="flex flex-space-between">
+                <dt class="txtr w-50">Missed Frames:</dt>
+                <dd class="w-50">0</dd>
+              </div>
+            </dl>
+          </div>
+          <div class="mt-base flex flex-center"><a class="button button-gradient button-sm" href="#">Capture</a><a class="button button-gradient button-sm ml-base" href="#">CMOS Reset</a></div>
+          <div class="mt-base flex flex-space-between flex-valign-middle">
+            <div class="form-toggle">
+              <div class="toggle-bg">
+                <input type="radio" name="capture" value="capture-single">
+                <input type="radio" name="capture" value="capture-continuous">
+                <div class="switch"></div>
+              </div>
+              <div class="toggle-label">Continuous</div>
+            </div>
+            <div class="form-toggle">
+              <div class="toggle-bg">
+                <input type="radio" name="aspect-ratio" value="scaled">
+                <input type="radio" name="aspect-ratio" value="actual">
+                <div class="switch"></div>
+              </div>
+              <div class="toggle-label">1:1</div>
+            </div>
+          </div>
+        </div>
+        <div class="p-h-gutter">
+          <hr>
+        </div>
+        <div class="p-h-gutter">
+          <form action="">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-6">
+                  <label class="form-control-label">Exposure</label>
+                  <input class="form-control" type="text" value="2000">
+                </div>
+                <div class="col-xs-6">
+                  <label class="form-control-label">Display Mode</label>
+                  <select class="form-control">
+                    <option>RGB</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-6">
+                  <label class="form-control-label">Capture Size</label>
+                  <input class="form-control" type="text" value="1296 × 972">
+                </div>
+                <div class="col-xs-6">
+                  <label class="form-control-label">Capture Mode</label>
+                  <select class="form-control">
+                    <option>Image</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="p-h-gutter">
+          <hr>
+          <div class="form-group">
+            <label class="form-control-label">Frame Buffer Depth (max = 1500 frames)</label>
+            <div class="range-with-values"><span class="range-min">Min</span><span class="range-slider">
+                <input type="range" min="0" max="100"></span><span class="range-max">100%</span></div>
+          </div>
+          <div class="form-group mt-md">
+            <label class="form-control-label">Current Buffer Level (723 frames)</label>
+            <div class="progress-bar">
+              <div class="progress-bar-min">0</div>
+              <div class="progress-bar-track">
+                <div class="progress-bar-value" style="width: 27%" title="27%"></div>
+              </div>
+              <div class="progress-bar-max">100%</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.throttle-debounce.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/svg4everybody.js"></script>
+    <script>svg4everybody();</script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+mixin sectionLink(s, name)
+  li
+    a(href=s, data-action="scroll")=name
+
+mixin icon(name, extraClass)
+  svg.icon(class=extraClass)
+    use(xlink:href=imagesPath + "icons.svg#icon-" + name)
+
+mixin breadcrumbs(pages)
+  ul.js-breadcrumbs.breadcrumbs(itemscope, itemtype="http://schema.org/BreadcrumbList", aria-label="breadcrumbs")
+
+    li.breadcrumb-item(itemprop="itemListElement", itemscope, itemtype="http://schema.org/ListItem")
+      a.breadcrumb-link(href=homeUrl, itemscope, itemtype="http://schema.org/Thing", itemprop="item", title="Home")
+        span(itemprop="name") Home
+      meta(itemprop="position", content="1")
+
+    each page, index in pages
+      if index < pages.length -1
+        li.breadcrumb-item(itemprop="itemListElement", itemscope itemtype="http://schema.org/ListItem")
+          a.breadcrumb-link(href="#", itemscope, itemtype="http://schema.org/Thing", itemprop="item", title="Accommodation")
+            span(property="name")=page
+          meta(itemprop="position", content=index + 2)
+      else
+        li.breadcrumb-item.breadcrumb-more.hidden
+          a.breadcrumb-link(href="#", data-toggle="dropdown", title="Toggle breadcrumbs", aria-label="Toggle breadcrumbs", aria-haspopup="true" aria-expanded="false", id="toggle-breadcrumbs") &middot;&middot;&middot;
+
+          ul.dropdown-menu.breadcrumbs-dropdown-menu(aria-labelledby="#toggle-breadcrumbs")
+
+        li.breadcrumb-item(itemprop="itemListElement", itemscope itemtype="http://schema.org/ListItem")
+          span(property="name")=page
+          meta(itemprop="position", content=index + 2)
+
+mixin accordion(slug, title, content, parent, isExpanded)
+  - var isExpandedAria = isExpanded ? "true" : "false";
+  - var linkCssClass = isExpanded ? "" : "collapsed";
+  - var contentCssClass = isExpanded ? "show" : "";
+
+  .mt-base
+    a(href="#" + slug role="button", data-toggle="collapse", aria-expanded=isExpandedAria, aria-controls=slug, class=linkCssClass, id=slug + '-link')
+      .text-overflow=title
+    .collapse(id=slug, class=contentCssClass, data-parent=parent, aria-labelledby=slug + '-link')
+      .box.box-default.mt-base=content
