@@ -1,0 +1,5 @@
+.DS_Store
+node_modules
+favicon-data.json
+*.sublime-workspace
+secret.json

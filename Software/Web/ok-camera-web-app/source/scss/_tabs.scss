@@ -1,0 +1,43 @@
+// ==========
+//  MUSTRA TABS
+//
+// Basic tabbed navigation
+
+.tabs {
+  @include clearfix;
+  margin: 0 0 $spacing-type 0;
+  padding: 0 0 ($spacing-xs+1) 0;
+  border-bottom: 2px solid $color-shaded;
+
+  > li {
+    float: left;
+    list-style: none;
+    margin: 0 0 0 -2px;
+    padding: 0;
+  }
+}
+
+// Tab link
+
+.tab {
+  padding: $spacing-sm;
+  border: 2px solid $color-shaded;
+
+  &.active {
+    background-color: $color-shaded;
+    outline: none;
+  }
+}
+
+// Tab content
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+
+  > .active {
+    display: block;
+  }
+}

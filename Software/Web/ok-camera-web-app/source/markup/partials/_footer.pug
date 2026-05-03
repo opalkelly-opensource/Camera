@@ -1,0 +1,38 @@
+block footer
+  script(src=jsPath + "jquery.js")
+  script(src=jsPath + "jquery.throttle-debounce.js")
+  //- script(src=jsPath + "popper.js")
+  //- script(src=jsPath + "util.js")
+  //- script(src=jsPath + "collapse.js")
+  //- script(src=jsPath + "dropdown.js")
+  //- script(src=jsPath + "modal.js")
+  //- script(src=jsPath + "tab.js")
+  //- script(src=jsPath + "tab-extend.js")
+  //- script(src=jsPath + "slick.js")
+  //- script(src=jsPath + "carousel.js")
+  //- script(src=jsPath + "anchor.js")
+  //- script(src=jsPath + "breadcrumb.js")
+  //- script(src=jsPath + "drawer.js")
+  //- script(src=jsPath + "scroll-to-element.js")
+  script(src=jsPath + "app.js")
+
+  //- JS polyfil for SVG sprites in IE11 (for IE6-IE8 support load *-legacy.js file instead)
+  script(src=jsPath + "svg4everybody.js")
+  script svg4everybody();
+
+  //- Concatenated and minified version with all libraries included
+  //- script(src=jsPath + "app.min.js")
+
+  //- Deferred loading JS
+  //- Source: https://varvy.com/pagespeed/defer-loading-javascript.html
+  //- script(type="text/javascript").
+      function downloadJSAtOnload() {
+          var element = document.createElement("script");
+          element.src = "assets/js/app.min.js";
+          document.body.appendChild(element);
+      }
+      if (window.addEventListener)
+          window.addEventListener("load", downloadJSAtOnload, false);
+      else if (window.attachEvent)
+          window.attachEvent("onload", downloadJSAtOnload);
+      else window.onload = downloadJSAtOnload;

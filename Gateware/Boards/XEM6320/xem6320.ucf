@@ -1,0 +1,869 @@
+############################################################################
+# XEM6320 - Xilinx constraints file
+#
+# Pin mappings for the XEM6320.  Use this as a template and comment out 
+# the pins that are not used in your design.  (By default, map will fail
+# if this file contains constraints for signals not in your design).
+#
+# Copyright (c) 2004-2010 Opal Kelly Incorporated
+# $Rev: 584 $ $Date: 2010-10-01 11:14:42 -0500 (Fri, 01 Oct 2010) $
+############################################################################
+
+NET "okUH[0]" TNM_NET = "okHostClk";
+TIMESPEC "TS_okHostClk" = PERIOD "okHostClk" 9.96 ns HIGH 50%;
+
+NET "okUHU[*]" TNM = "okHostINOUT_grp";
+TIMEGRP "okHostINOUT_grp" OFFSET = IN 2 ns VALID 4 ns BEFORE "okUH[0]" RISING;
+TIMEGRP "okHostINOUT_grp" OFFSET = OUT 8 ns AFTER "okUH[0]" RISING;
+
+#NET "okHU[2]" TNM = "okHostOUT_grp";
+#NET "okHU[1]" TNM = "okHostOUT_grp";
+#NET "okHU[0]" TNM = "okHostOUT_grp";
+#TIMEGRP "okHostOUT_grp" OFFSET = OUT 8 ns AFTER "okUH[0]" RISING;
+
+NET "okUH[4]"   TNM = "okHostIN_grp";
+NET "okUH[3]"   TNM = "okHostIN_grp";
+NET "okUH[2]"   TNM = "okHostIN_grp";
+NET "okUH[1]"   TNM = "okHostIN_grp";
+TIMEGRP "okHostIN_grp" OFFSET = IN 2 ns VALID 2 ns BEFORE "okUH[0]" RISING;
+
+############################################################################
+## System Clocks                                                        
+############################################################################
+NET "sys_clkp"  LOC=L23  | IOSTANDARD=LVDS_25 | DIFF_TERM = FALSE;;
+NET "sys_clkn"  LOC=M22  | IOSTANDARD=LVDS_25 | DIFF_TERM = FALSE;;
+
+NET "sys_clkp" TNM_NET = "okSysClk";
+TIMESPEC "TS_okSysClk" = PERIOD "okSysClk" 10 ns HIGH 50%;
+
+############################################################################
+## User Reset                                                        
+############################################################################
+#NET "reset"         LOC="G27"    | IOSTANDARD="LVCMOS18";
+
+############################################################################
+## FrontPanel Host Interface
+############################################################################
+NET "okHU[0]"        LOC="F26"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okHU[1]"        LOC="E24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okHU[2]"        LOC="AF23"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+
+NET "okUH[0]"        LOC="K24"     | IOSTANDARD="LVCMOS18";
+NET "okUH[1]"        LOC="T23"     | IOSTANDARD="LVCMOS18";
+NET "okUH[2]"        LOC="T24"     | IOSTANDARD="LVCMOS18";
+NET "okUH[3]"        LOC="J25"     | IOSTANDARD="LVCMOS18";
+NET "okUH[4]"        LOC="J24"     | IOSTANDARD="LVCMOS18";
+
+NET "okUHU<0>"       LOC="M23"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<1>"       LOC="L24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<2>"       LOC="F24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<3>"       LOC="F23"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<4>"       LOC="N23"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<5>"       LOC="N24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<6>"       LOC="H23"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<7>"       LOC="G23"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<8>"       LOC="R24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<9>"       LOC="P24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<10>"      LOC="H25"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<11>"      LOC="H24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<12>"      LOC="V24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<13>"      LOC="W24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<14>"      LOC="AF25"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<15>"      LOC="AF24"    | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<16>"      LOC="C28"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<17>"      LOC="D26"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<18>"      LOC="B28"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<19>"      LOC="C29"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<20>"      LOC="D29"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<21>"      LOC="A25"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<22>"      LOC="B26"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<23>"      LOC="C25"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<24>"      LOC="C24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<25>"      LOC="B27"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<26>"      LOC="C27"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<27>"      LOC="B25"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<28>"      LOC="D25"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<29>"      LOC="A26"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<30>"      LOC="D24"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+NET "okUHU<31>"      LOC="D27"     | IOSTANDARD="LVCMOS18" | SLEW="FAST";
+
+NET "okAA"           LOC="C30"     | IOSTANDARD="LVCMOS18";
+
+############################################################################
+## Peripherals                                                          
+############################################################################
+
+# LEDs ###############################################################
+NET "led[0]"    LOC=AG23 | IOSTANDARD=LVCMOS18;
+NET "led[1]"    LOC=AA23 | IOSTANDARD=LVCMOS18;
+NET "led[2]"    LOC=AE23 | IOSTANDARD=LVCMOS18;
+NET "led[3]"    LOC=AE22 | IOSTANDARD=LVCMOS18;
+NET "led[4]"    LOC=AC23 | IOSTANDARD=LVCMOS18;
+NET "led[5]"    LOC=AC24 | IOSTANDARD=LVCMOS18;
+NET "led[6]"    LOC=AC22 | IOSTANDARD=LVCMOS18;
+NET "led[7]"    LOC=AD22 | IOSTANDARD=LVCMOS18;
+
+# Flash ###############################################################
+#NET "spi_dq0"        LOC = "F25"   | IOSTANDARD="LVCMOS18";
+#NET "spi_c"          LOC = "G25"   | IOSTANDARD="LVCMOS18";
+#NET "spi_s"          LOC = "F28"   | IOSTANDARD="LVCMOS18";
+#NET "spi_dq1"        LOC = "A30"   | IOSTANDARD="LVCMOS18";
+#NET "spi_w_dq2"      LOC = "B30"   | IOSTANDARD="LVCMOS18";
+#NET "spi_hold_dq3"   LOC = "D30"   | IOSTANDARD="LVCMOS18";
+
+############################################################################
+## FMC Expansion Connectors                                                         
+############################################################################
+
+# FMC A ##############################################################
+#   IOSTANDARDS assume VADJ = VIO_B_M2C = 2.5V 
+#   make adjustemts as necessary for other voltages/standards.
+######################################################################
+CONFIG DCI_CASCADE = "35 34 36";
+#CONFIG INTERNAL_VREF_BANK34=1.25;
+#CONFIG INTERNAL_VREF_BANK35=1.25;
+#CONFIG INTERNAL_VREF_BANK36=1.25;
+#CONFIG INTERNAL_VREF_BANK26=1.25;
+#CONFIG INTERNAL_VREF_BANK15=1.25;
+#CONFIG INTERNAL_VREF_BANK14=1.25;
+
+# System Controller ##############################
+NET "fmca_sdata" LOC=H27 | IOSTANDARD=LVCMOS18;
+NET "fmca_sclk"  LOC=G28 | IOSTANDARD=LVCMOS18;
+
+# CLK_M2C[1..0] ##################################
+NET "fmca_clk_m2c_0p"  LOC=J9  | IOSTANDARD=LVDS_25;
+NET "fmca_clk_m2c_0n"  LOC=H9  | IOSTANDARD=LVDS_25;
+NET "fmca_clk_m2c_1p"  LOC=A10 | IOSTANDARD=LVDS_25;
+NET "fmca_clk_m2c_1n"  LOC=B10 | IOSTANDARD=LVDS_25;
+
+# CLK_BIDIR[3..2] ################################
+NET "fmca_clk_bidir_2p"  LOC=D11 | IOSTANDARD=LVDS_25;
+NET "fmca_clk_bidir_2n"  LOC=E11 | IOSTANDARD=LVDS_25;
+NET "fmca_clk_bidir_3p"  LOC=N33 | IOSTANDARD=LVDS_25;
+NET "fmca_clk_bidir_3n"  LOC=M33 | IOSTANDARD=LVDS_25;
+
+# LA[33..0] ######################################
+NET "fmca_lap[0]"   LOC=K13 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[0]"   LOC=K12 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[1]"   LOC=G18 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[1]"   LOC=H18 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[2]"   LOC=K18 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[2]"   LOC=K17 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[3]"   LOC=H17 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[3]"   LOC=G17 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[4]"   LOC=C17 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[4]"   LOC=B17 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[5]"   LOC=K19 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[5]"   LOC=J19 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[6]"   LOC=M18 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[6]"   LOC=M17 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[7]"   LOC=L15 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[7]"   LOC=L14 | IOSTANDARD=LVDS_25;
+
+NET "fmca_lap[8]"   LOC=A16 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[8]"   LOC=B16 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[9]"   LOC=F16 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[9]"   LOC=G16 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[10]"  LOC=E16 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[10]"  LOC=D16 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[11]"  LOC=A15 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[11]"  LOC=B15 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[12]"  LOC=G15 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[12]"  LOC=F15 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[13]"  LOC=M16 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[13]"  LOC=M15 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[14]"  LOC=H15 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[14]"  LOC=J15 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[15]"  LOC=D15 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[15]"  LOC=C15 | IOSTANDARD=LVDS_25;
+
+NET "fmca_lap[16]"  LOC=C20 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[16]"  LOC=D20 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[17]"  LOC=K16 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[17]"  LOC=L16 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[18]"  LOC=B20 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[18]"  LOC=C19 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[19]"  LOC=A23 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[19]"  LOC=A24 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[20]"  LOC=G21 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[20]"  LOC=G22 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[21]"  LOC=B23 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[21]"  LOC=C23 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[22]"  LOC=B21 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[22]"  LOC=B22 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[23]"  LOC=E22 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[23]"  LOC=E23 | IOSTANDARD=LVDS_25;
+
+NET "fmca_lap[24]"  LOC=A20 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[24]"  LOC=A21 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[25]"  LOC=F19 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[25]"  LOC=F20 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[26]"  LOC=F21 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[26]"  LOC=G20 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[27]"  LOC=H19 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[27]"  LOC=H20 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[28]"  LOC=E19 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[28]"  LOC=D19 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[29]"  LOC=A18 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[29]"  LOC=A19 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[30]"  LOC=K21 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[30]"  LOC=K22 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[31]"  LOC=B18 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[31]"  LOC=C18 | IOSTANDARD=LVDS_25;
+
+NET "fmca_lap[32]"  LOC=L20 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[32]"  LOC=L21 | IOSTANDARD=LVDS_25;
+NET "fmca_lap[33]"  LOC=C22 | IOSTANDARD=LVDS_25;
+NET "fmca_lan[33]"  LOC=D22 | IOSTANDARD=LVDS_25;
+
+# HA[23..0] ######################################
+NET "fmca_hap[0]"   LOC=L10 | IOSTANDARD=LVDS_25;
+NET "fmca_han[0]"   LOC=M10 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[1]"   LOC=L9  | IOSTANDARD=LVDS_25;
+NET "fmca_han[1]"   LOC=K9  | IOSTANDARD=LVDS_25;
+NET "fmca_hap[2]"   LOC=F9  | IOSTANDARD=LVDS_25;
+NET "fmca_han[2]"   LOC=F10 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[3]"   LOC=C10 | IOSTANDARD=LVDS_25;
+NET "fmca_han[3]"   LOC=D10 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[4]"   LOC=A9  | IOSTANDARD=LVDS_25;
+NET "fmca_han[4]"   LOC=A8  | IOSTANDARD=LVDS_25;
+NET "fmca_hap[5]"   LOC=E8  | IOSTANDARD=LVDS_25;
+NET "fmca_han[5]"   LOC=E9  | IOSTANDARD=LVDS_25;
+NET "fmca_hap[6]"   LOC=B8  | IOSTANDARD=LVDS_25;
+NET "fmca_han[6]"   LOC=C8  | IOSTANDARD=LVDS_25;
+NET "fmca_hap[7]"   LOC=G13 | IOSTANDARD=LVDS_25;
+NET "fmca_han[7]"   LOC=H14 | IOSTANDARD=LVDS_25;
+
+NET "fmca_hap[8]"   LOC=D14 | IOSTANDARD=LVDS_25;
+NET "fmca_han[8]"   LOC=C14 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[9]"   LOC=G11 | IOSTANDARD=LVDS_25;
+NET "fmca_han[9]"   LOC=F11 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[10]"  LOC=A13 | IOSTANDARD=LVDS_25;
+NET "fmca_han[10]"  LOC=A14 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[11]"  LOC=F14 | IOSTANDARD=LVDS_25;
+NET "fmca_han[11]"  LOC=E14 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[12]"  LOC=H10 | IOSTANDARD=LVDS_25;
+NET "fmca_han[12]"  LOC=G10 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[13]"  LOC=B12 | IOSTANDARD=LVDS_25;
+NET "fmca_han[13]"  LOC=B13 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[14]"  LOC=K14 | IOSTANDARD=LVDS_25;
+NET "fmca_han[14]"  LOC=J14 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[15]"  LOC=M12 | IOSTANDARD=LVDS_25;
+NET "fmca_han[15]"  LOC=M11 | IOSTANDARD=LVDS_25;
+
+NET "fmca_hap[16]"  LOC=C13 | IOSTANDARD=LVDS_25;
+NET "fmca_han[16]"  LOC=C12 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[17]"  LOC=L13 | IOSTANDARD=LVDS_25;
+NET "fmca_han[17]"  LOC=M13 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[18]"  LOC=H12 | IOSTANDARD=LVDS_25;
+NET "fmca_han[18]"  LOC=J12 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[19]"  LOC=A11 | IOSTANDARD=LVDS_25;
+NET "fmca_han[19]"  LOC=B11 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[20]"  LOC=E13 | IOSTANDARD=LVDS_25;
+NET "fmca_han[20]"  LOC=F13 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[21]"  LOC=D12 | IOSTANDARD=LVDS_25;
+NET "fmca_han[21]"  LOC=E12 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[22]"  LOC=F18 | IOSTANDARD=LVDS_25;
+NET "fmca_han[22]"  LOC=E17 | IOSTANDARD=LVDS_25;
+NET "fmca_hap[23]"  LOC=E18 | IOSTANDARD=LVDS_25;
+NET "fmca_han[23]"  LOC=D17 | IOSTANDARD=LVDS_25;
+
+# HB[21..0] ######################################
+NET "fmca_hbp[0]"   LOC=N28 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[0]"   LOC=N29 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[1]"   LOC=M31 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[1]"   LOC=L31 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[2]"   LOC=N25 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[2]"   LOC=M25 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[3]"   LOC=P25 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[3]"   LOC=P26 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[4]"   LOC=M26 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[4]"   LOC=M27 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[5]"   LOC=N27 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[5]"   LOC=P27 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[6]"   LOC=L29 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[6]"   LOC=L30 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[7]"   LOC=L33 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[7]"   LOC=M32 | IOSTANDARD=LVDS_25;
+
+NET "fmca_hbp[8]"   LOC=L28 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[8]"   LOC=M28 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[9]"   LOC=R28 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[9]"   LOC=R27 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[10]"  LOC=K32 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[10]"  LOC=K31 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[11]"  LOC=N32 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[11]"  LOC=P32 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[12]"  LOC=R26 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[12]"  LOC=T26 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[13]"  LOC=M30 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[13]"  LOC=N30 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[14]"  LOC=N34 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[14]"  LOC=P34 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[15]"  LOC=P29 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[15]"  LOC=R29 | IOSTANDARD=LVDS_25;
+
+NET "fmca_hbp[16]"  LOC=U25 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[16]"  LOC=T25 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[17]"  LOC=V30 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[17]"  LOC=W30 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[18]"  LOC=T28 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[18]"  LOC=T29 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[19]"  LOC=R33 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[19]"  LOC=R34 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[20]"  LOC=U33 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[20]"  LOC=U32 | IOSTANDARD=LVDS_25;
+NET "fmca_hbp[21]"  LOC=U26 | IOSTANDARD=LVDS_25;
+NET "fmca_hbn[21]"  LOC=U27 | IOSTANDARD=LVDS_25;
+
+# DP_M2C[9..0] ###################################
+NET "fmca_dp_m2cp[0]"  LOC=G3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[0]"  LOC=G4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[1]"  LOC=E3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[1]"  LOC=E4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[2]"  LOC=D5 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[2]"  LOC=D6 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[3]"  LOC=B5 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[3]"  LOC=B6 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[4]"  LOC=N3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[4]"  LOC=N4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[5]"  LOC=L3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[5]"  LOC=L4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[6]"  LOC=K5 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[6]"  LOC=K6 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[7]"  LOC=J3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[7]"  LOC=J4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[8]"  LOC=U3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[8]"  LOC=U4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cp[9]"  LOC=R3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_m2cn[9]"  LOC=R4 | IOSTANDARD=LVDS_25;
+
+# DP_C2M[9..0] ###################################
+NET "fmca_dp_c2mp[0]"  LOC=D1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[0]"  LOC=D2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[1]"  LOC=C3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[1]"  LOC=C4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[2]"  LOC=B1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[2]"  LOC=B2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[3]"  LOC=A3 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[3]"  LOC=A4 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[4]"  LOC=M1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[4]"  LOC=M2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[5]"  LOC=K1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[5]"  LOC=K2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[6]"  LOC=H1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[6]"  LOC=H2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[7]"  LOC=F1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[7]"  LOC=F2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[8]"  LOC=T1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[8]"  LOC=T2 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mp[9]"  LOC=P1 | IOSTANDARD=LVDS_25;
+NET "fmca_dp_c2mn[9]"  LOC=P2 | IOSTANDARD=LVDS_25;
+
+
+# GBTCLK_M2C[1..0] ###############################
+NET "fmca_gbtclk_m2cp[0]"  LOC=P6 | IOSTANDARD=LVDS_25;
+NET "fmca_gbtclk_m2cn[0]"  LOC=P5 | IOSTANDARD=LVDS_25;
+NET "fmca_gbtclk_m2cp[1]"  LOC=M6 | IOSTANDARD=LVDS_25;
+NET "fmca_gbtclk_m2cn[1]"  LOC=M5 | IOSTANDARD=LVDS_25;
+
+
+# FMC B ##############################################################
+#   IOSTANDARDS assume VADJ = VIO_B_M2C = 2.5V 
+#   make adjustemts as necessary for other voltages/standards.
+######################################################################
+CONFIG DCI_CASCADE = "13 12";
+#CONFIG INTERNAL_VREF_BANK13=1.25;
+#CONFIG INTERNAL_VREF_BANK12=1.25;
+#CONFIG INTERNAL_VREF_BANK32=1.25;
+#CONFIG INTERNAL_VREF_BANK33=1.25;
+
+# System Controller ##############################
+NET "fmcb_sdata" LOC=A28 | IOSTANDARD=LVCMOS18;
+NET "fmcb_sclk"  LOC=A29 | IOSTANDARD=LVCMOS18;
+
+# CLK_M2C[1..0] ##################################
+NET "fmcb_clk_m2c_0p"  LOC=AE33 | IOSTANDARD=LVDS_25;
+NET "fmcb_clk_m2c_0n"  LOC=AF33 | IOSTANDARD=LVDS_25;
+NET "fmcb_clk_m2c_1p"  LOC=AD30 | IOSTANDARD=LVDS_25;
+NET "fmcb_clk_m2c_1n"  LOC=AC30 | IOSTANDARD=LVDS_25;
+
+# CLK_BIDIR[3..2] ################################
+NET "fmcb_clk_bidir_2p"  LOC=AF30 | IOSTANDARD=LVDS_25;
+NET "fmcb_clk_bidir_2n"  LOC=AG30 | IOSTANDARD=LVDS_25;
+NET "fmcb_clk_bidir_3p"  LOC=AD12 | IOSTANDARD=LVDS_25;
+NET "fmcb_clk_bidir_3n"  LOC=AD11 | IOSTANDARD=LVDS_25;
+
+# LA[33..0] ######################################
+NET "fmcb_lap[0]"   LOC=AG27 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[0]"   LOC=AG28 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[1]"   LOC=AN33 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[1]"   LOC=AN34 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[2]"   LOC=AD25 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[2]"   LOC=AD26 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[3]"   LOC=AE27 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[3]"   LOC=AD27 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[4]"   LOC=AH33 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[4]"   LOC=AH32 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[5]"   LOC=AE28 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[5]"   LOC=AE29 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[6]"   LOC=AF28 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[6]"   LOC=AF29 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[7]"   LOC=AL34 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[7]"   LOC=AK34 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_lap[8]"   LOC=AH29 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[8]"   LOC=AH30 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[9]"   LOC=AF26 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[9]"   LOC=AE26 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[10]"  LOC=AJ31 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[10]"  LOC=AJ32 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[11]"  LOC=AJ29 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[11]"  LOC=AJ30 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[12]"  LOC=AL31 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[12]"  LOC=AK31 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[13]"  LOC=AM33 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[13]"  LOC=AL33 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[14]"  LOC=AN32 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[14]"  LOC=AM32 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[15]"  LOC=AP32 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[15]"  LOC=AP33 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_lap[16]"  LOC=AL30 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[16]"  LOC=AM31 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[17]"  LOC=AC18 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[17]"  LOC=AC17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[18]"  LOC=AE16 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[18]"  LOC=AD16 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[19]"  LOC=AG15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[19]"  LOC=AF15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[20]"  LOC=AK14 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[20]"  LOC=AJ14 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[21]"  LOC=AJ15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[21]"  LOC=AH15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[22]"  LOC=AD17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[22]"  LOC=AE17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[23]"  LOC=AE18 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[23]"  LOC=AF18 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_lap[24]"  LOC=AJ17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[24]"  LOC=AJ16 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[25]"  LOC=AN17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[25]"  LOC=AP17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[26]"  LOC=AH17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[26]"  LOC=AG17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[27]"  LOC=AC15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[27]"  LOC=AD15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[28]"  LOC=AP16 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[28]"  LOC=AP15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[29]"  LOC=AM17 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[29]"  LOC=AM16 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[30]"  LOC=AL15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[30]"  LOC=AL14 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[31]"  LOC=AK18 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[31]"  LOC=AK17 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_lap[32]"  LOC=AN15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[32]"  LOC=AM15 | IOSTANDARD=LVDS_25;
+NET "fmcb_lap[33]"  LOC=AL16 | IOSTANDARD=LVDS_25;
+NET "fmcb_lan[33]"  LOC=AK16 | IOSTANDARD=LVDS_25;
+
+# HA[23..0] ######################################
+NET "fmcb_hap[0]"   LOC=AE34 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[0]"   LOC=AF34 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[1]"   LOC=AD29 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[1]"   LOC=AC29 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[2]"   LOC=AA34 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[2]"   LOC=AA33 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[3]"   LOC=AA30 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[3]"   LOC=AA31 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[4]"   LOC=AD34 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[4]"   LOC=AC34 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[5]"   LOC=AB30 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[5]"   LOC=AB31 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[6]"   LOC=AE31 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[6]"   LOC=AD31 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[7]"   LOC=AG31 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[7]"   LOC=AF31 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_hap[8]"   LOC=AA28 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[8]"   LOC=AA29 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[9]"   LOC=AB28 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[9]"   LOC=AC28 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[10]"  LOC=AB27 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[10]"  LOC=AC27 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[11]"  LOC=AG33 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[11]"  LOC=AG32 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[12]"  LOC=AA26 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[12]"  LOC=AB26 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[13]"  LOC=AA25 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[13]"  LOC=Y26  | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[14]"  LOC=AB25 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[14]"  LOC=AC25 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[15]"  LOC=AH9  | IOSTANDARD=LVDS_25;
+NET "fmcb_han[15]"  LOC=AJ9  | IOSTANDARD=LVDS_25;
+
+NET "fmcb_hap[16]"  LOC=AD10 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[16]"  LOC=AC9  | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[17]"  LOC=AC10 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[17]"  LOC=AB10 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[18]"  LOC=AK8  | IOSTANDARD=LVDS_25;
+NET "fmcb_han[18]"  LOC=AL8  | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[19]"  LOC=AK9  | IOSTANDARD=LVDS_25;
+NET "fmcb_han[19]"  LOC=AL9  | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[20]"  LOC=AF9  | IOSTANDARD=LVDS_25;
+NET "fmcb_han[20]"  LOC=AF10 | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[21]"  LOC=AN9  | IOSTANDARD=LVDS_25;
+NET "fmcb_han[21]"  LOC=AP9  | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[22]"  LOC=AG8  | IOSTANDARD=LVDS_25;
+NET "fmcb_han[22]"  LOC=AH8  | IOSTANDARD=LVDS_25;
+NET "fmcb_hap[23]"  LOC=AN10 | IOSTANDARD=LVDS_25;
+NET "fmcb_han[23]"  LOC=AP10 | IOSTANDARD=LVDS_25;
+
+# HB[21..0] ######################################
+NET "fmcb_hbp[0]"   LOC=AC13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[0]"   LOC=AC12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[1]"   LOC=AE13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[1]"   LOC=AE12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[2]"   LOC=AJ11 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[2]"   LOC=AK11 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[3]"   LOC=AD14 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[3]"   LOC=AC14 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[4]"   LOC=AK12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[4]"   LOC=AJ12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[5]"   LOC=AM10 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[5]"   LOC=AL10 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[6]"   LOC=AP11 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[6]"   LOC=AP12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[7]"   LOC=AG11 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[7]"   LOC=AG10 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_hbp[8]"   LOC=AL11 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[8]"   LOC=AM11 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[9]"   LOC=AJ10 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[9]"   LOC=AH10 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[10]"  LOC=AM12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[10]"  LOC=AN12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[11]"  LOC=AN13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[11]"  LOC=AM13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[12]"  LOC=AG12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[12]"  LOC=AH12 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[13]"  LOC=AK13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[13]"  LOC=AL13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[14]"  LOC=AH13 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[14]"  LOC=AH14 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[15]"  LOC=AP14 | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[15]"  LOC=AN14 | IOSTANDARD=LVDS_25;
+
+NET "fmcb_hbp[16]"  LOC=V34  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[16]"  LOC=W34  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[17]"  LOC=V28  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[17]"  LOC=V27  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[18]"  LOC=Y32  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[18]"  LOC=Y31  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[19]"  LOC=W29  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[19]"  LOC=Y29  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[20]"  LOC=W31  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[20]"  LOC=W32  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbp[21]"  LOC=Y28  | IOSTANDARD=LVDS_25;
+NET "fmcb_hbn[21]"  LOC=Y27  | IOSTANDARD=LVDS_25;
+
+# DP_M2C[9..0] ###################################
+NET "fmcb_dp_m2cp[0]"  LOC=AP5 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[0]"  LOC=AP6 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[1]"  LOC=AM5 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[1]"  LOC=AM6 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[2]"  LOC=AL3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[2]"  LOC=AL4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[3]"  LOC=AJ3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[3]"  LOC=AJ4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[4]"  LOC=AG3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[4]"  LOC=AG4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[5]"  LOC=AF5 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[5]"  LOC=AF6 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[6]"  LOC=AE3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[6]"  LOC=AE4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[7]"  LOC=AC3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[7]"  LOC=AC4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[8]"  LOC=AA3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[8]"  LOC=AA4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cp[9]"  LOC=W3  | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_m2cn[9]"  LOC=W4  | IOSTANDARD=LVDS_25;
+
+# DP_C2M[9..0] ###################################
+NET "fmcb_dp_c2mp[0]"  LOC=AP1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[0]"  LOC=AP2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[1]"  LOC=AN3 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[1]"  LOC=AN4 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[2]"  LOC=AM1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[2]"  LOC=AM2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[3]"  LOC=AK1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[3]"  LOC=AK2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[4]"  LOC=AH1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[4]"  LOC=AH2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[5]"  LOC=AF1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[5]"  LOC=AF2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[6]"  LOC=AD1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[6]"  LOC=AD2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[7]"  LOC=AB1 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[7]"  LOC=AB2 | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[8]"  LOC=Y1  | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[8]"  LOC=Y2  | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mp[9]"  LOC=V1  | IOSTANDARD=LVDS_25;
+NET "fmcb_dp_c2mn[9]"  LOC=V2  | IOSTANDARD=LVDS_25;
+
+# GBTCLK_M2C[1..0] ###############################
+NET "fmcb_gbtclk_m2cp[0]"  LOC=AD6 | IOSTANDARD=LVDS_25;
+NET "fmcb_gbtclk_m2cn[0]"  LOC=AD5 | IOSTANDARD=LVDS_25;
+NET "fmcb_gbtclk_m2cp[1]"  LOC=AB6 | IOSTANDARD=LVDS_25;
+NET "fmcb_gbtclk_m2cn[1]"  LOC=AB5 | IOSTANDARD=LVDS_25;
+
+
+############################################################################
+## XILINX MIG Constaints                                                       
+############################################################################
+
+############################################################################
+## 
+##  Xilinx, Inc. 2006            www.xilinx.com 
+##  Fri Aug 17 14:14:52 2012
+##  Generated by MIG Version 3.9
+##  
+############################################################################
+##  File name :       example_top.ucf
+## 
+##  Details :     Constraints file
+##                    FPGA family:       virtex6
+##                    FPGA:              xc6vlx130t-ff1156
+##                    Speedgrade:        -1
+##                    Design Entry:      VERILOG
+##                    Design:            with Test bench
+##                    No.Of Controllers: 1
+##
+############################################################################ 
+############################################################################
+# Timing constraints                                                        #
+############################################################################
+TIMESPEC "TS_sys_clk" = PERIOD 2.5 ns;
+
+#NET "clk_ref_p" TNM_NET = TNM_clk_ref;
+#TIMESPEC "TS_clk_ref" = PERIOD "TNM_clk_ref" 5 ns ;
+
+# Constrain BUFR clocks used to synchronize data from IOB to fabric logic
+# Note that ISE cannot infer this from other PERIOD constraints because
+# of the use of OSERDES blocks in the BUFR clock generation path
+NET "u_memc_ui_top/u_mem_intfc/phy_top0/clk_rsync[?]" TNM_NET = TNM_clk_rsync;
+TIMESPEC "TS_clk_rsync" = PERIOD "TNM_clk_rsync" 5 ns;
+
+# Paths between DQ/DQS ISERDES.Q outputs and CLB flops clocked by falling
+# edge of BUFR will by design only be used if DYNCLKDIVSEL is asserted for
+# that particular flop. Mark this path as being a full-cycle, rather than
+# a half cycle path for timing purposes. NOTE: This constraint forces full-
+# cycle timing to be applied globally for all rising->falling edge paths
+# in all resynchronizaton clock domains. If the user had modified the logic
+# in the resync clock domain such that other rising->falling edge paths
+# exist, then constraint below should be modified to utilize pattern
+# matching to specific affect only the DQ/DQS ISERDES.Q outputs
+TIMEGRP "TG_clk_rsync_rise" = RISING  "TNM_clk_rsync";
+TIMEGRP "TG_clk_rsync_fall" = FALLING "TNM_clk_rsync";
+TIMESPEC "TS_clk_rsync_rise_to_fall" =
+  FROM "TG_clk_rsync_rise" TO "TG_clk_rsync_fall" "TS_sys_clk" * 2;
+
+# Signal to select between controller and physical layer signals. Four divided by two clock
+# cycles (4 memory clock cycles) are provided by design for the signal to settle down.
+# Used only by the phy modules.
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_init/u_ff_phy_init_data_sel" TNM = "TNM_PHY_INIT_SEL";
+TIMESPEC "TS_MC_PHY_INIT_SEL" = FROM "TNM_PHY_INIT_SEL" TO FFS = "TS_sys_clk"*4;
+############################################################################
+########################################################################
+# Controller 0
+# Memory Device: DDR3_SDRAM->Components->MT41J128M16XX-15E
+# Supported Part Numbers: MT41J128M16HA-15E
+
+# Data Width:     32
+# Frequency:      400
+# Time Period:      2500
+# Data Mask:     1
+########################################################################
+
+
+################################################################################
+# I/O STANDARDS
+################################################################################
+
+NET  "ddr3_dq[*]"                               IOSTANDARD = SSTL15_T_DCI;
+NET  "ddr3_addr[*]"                             IOSTANDARD = SSTL15;
+NET  "ddr3_ba[*]"                               IOSTANDARD = SSTL15;
+NET  "ddr3_ras_n"                               IOSTANDARD = SSTL15;
+NET  "ddr3_cas_n"                               IOSTANDARD = SSTL15;
+NET  "ddr3_we_n"                                IOSTANDARD = SSTL15;
+NET  "ddr3_reset_n"                             IOSTANDARD = LVCMOS15;
+NET  "ddr3_cke[*]"                              IOSTANDARD = SSTL15;
+NET  "ddr3_odt[*]"                              IOSTANDARD = SSTL15;
+NET  "ddr3_cs_n[*]"                             IOSTANDARD = SSTL15;
+NET  "ddr3_dm[*]"                               IOSTANDARD = SSTL15;
+NET  "ddr3_dqs_p[*]"                            IOSTANDARD = DIFF_SSTL15_T_DCI;
+NET  "ddr3_dqs_n[*]"                            IOSTANDARD = DIFF_SSTL15_T_DCI;
+NET  "ddr3_ck_p[*]"                             IOSTANDARD = DIFF_SSTL15;
+NET  "ddr3_ck_n[*]"                             IOSTANDARD = DIFF_SSTL15;
+
+
+###############################################################################
+#DCI_CASCADING
+#Syntax : CONFIG DCI_CASCADE = "<master> <slave1> <slave2> ..";
+###############################################################################
+CONFIG DCI_CASCADE = "22 23";
+
+
+##################################################################################
+# Location Constraints
+##################################################################################
+NET  "ddr3_dq[0]"                                LOC = "AJ24" ;          #Bank 23
+NET  "ddr3_dq[1]"                                LOC = "AK24" ;          #Bank 23
+NET  "ddr3_dq[2]"                                LOC = "AP27" ;          #Bank 23
+NET  "ddr3_dq[3]"                                LOC = "AP26" ;          #Bank 23
+NET  "ddr3_dq[4]"                                LOC = "AN25" ;          #Bank 23
+NET  "ddr3_dq[5]"                                LOC = "AN24" ;          #Bank 23
+NET  "ddr3_dq[6]"                                LOC = "AK23" ;          #Bank 23
+NET  "ddr3_dq[7]"                                LOC = "AL24" ;          #Bank 23
+NET  "ddr3_dq[8]"                                LOC = "AE21" ;          #Bank 22
+NET  "ddr3_dq[9]"                                LOC = "AD21" ;          #Bank 22
+NET  "ddr3_dq[10]"                               LOC = "AM18" ;          #Bank 22
+NET  "ddr3_dq[11]"                               LOC = "AL18" ;          #Bank 22
+NET  "ddr3_dq[12]"                               LOC = "AP19" ;          #Bank 22
+NET  "ddr3_dq[13]"                               LOC = "AN18" ;          #Bank 22
+NET  "ddr3_dq[14]"                               LOC = "AK22" ;          #Bank 22
+NET  "ddr3_dq[15]"                               LOC = "AJ22" ;          #Bank 22
+NET  "ddr3_dq[16]"                               LOC = "AN20" ;          #Bank 22
+NET  "ddr3_dq[17]"                               LOC = "AC20" ;          #Bank 22
+NET  "ddr3_dq[18]"                               LOC = "AD20" ;          #Bank 22
+NET  "ddr3_dq[19]"                               LOC = "AF19" ;          #Bank 22
+NET  "ddr3_dq[20]"                               LOC = "AE19" ;          #Bank 22
+NET  "ddr3_dq[21]"                               LOC = "AP21" ;          #Bank 22
+NET  "ddr3_dq[22]"                               LOC = "AL19" ;          #Bank 22
+NET  "ddr3_dq[23]"                               LOC = "AF21" ;          #Bank 22
+NET  "ddr3_dq[24]"                               LOC = "AL21" ;          #Bank 22
+NET  "ddr3_dq[25]"                               LOC = "AC19" ;          #Bank 22
+NET  "ddr3_dq[26]"                               LOC = "AD19" ;          #Bank 22
+NET  "ddr3_dq[27]"                               LOC = "AM23" ;          #Bank 22
+NET  "ddr3_dq[28]"                               LOC = "AL23" ;          #Bank 22
+NET  "ddr3_dq[29]"                               LOC = "AM22" ;          #Bank 22
+NET  "ddr3_dq[30]"                               LOC = "AN22" ;          #Bank 22
+NET  "ddr3_dq[31]"                               LOC = "AG20" ;          #Bank 22
+NET  "ddr3_addr[13]"                             LOC = "AH27" ;          #Bank 23
+NET  "ddr3_addr[12]"                             LOC = "AH28" ;          #Bank 23
+NET  "ddr3_addr[11]"                             LOC = "AN30" ;          #Bank 23
+NET  "ddr3_addr[10]"                             LOC = "AM30" ;          #Bank 23
+NET  "ddr3_addr[9]"                              LOC = "AG25" ;          #Bank 23
+NET  "ddr3_addr[8]"                              LOC = "AG26" ;          #Bank 23
+NET  "ddr3_addr[7]"                              LOC = "AP30" ;          #Bank 23
+NET  "ddr3_addr[6]"                              LOC = "AP31" ;          #Bank 23
+NET  "ddr3_addr[5]"                              LOC = "AL29" ;          #Bank 23
+NET  "ddr3_addr[4]"                              LOC = "AK29" ;          #Bank 23
+NET  "ddr3_addr[3]"                              LOC = "AN29" ;          #Bank 23
+NET  "ddr3_addr[2]"                              LOC = "AP29" ;          #Bank 23
+NET  "ddr3_addr[1]"                              LOC = "AL28" ;          #Bank 23
+NET  "ddr3_addr[0]"                              LOC = "AK28" ;          #Bank 23
+NET  "ddr3_ba[2]"                                LOC = "AN28" ;          #Bank 23
+NET  "ddr3_ba[1]"                                LOC = "AM28" ;          #Bank 23
+NET  "ddr3_ba[0]"                                LOC = "AJ25" ;          #Bank 23
+NET  "ddr3_ras_n"                                LOC = "AK27" ;          #Bank 23
+NET  "ddr3_cas_n"                                LOC = "AJ27" ;          #Bank 23
+NET  "ddr3_we_n"                                 LOC = "AH24" ;          #Bank 23
+NET  "ddr3_reset_n"                              LOC = "AK26" ;          #Bank 23
+NET  "ddr3_cke[0]"                               LOC = "AJ26" ;          #Bank 23
+NET  "ddr3_odt[0]"                               LOC = "AL26" ;          #Bank 23
+NET  "ddr3_cs_n[0]"                              LOC = "AM26" ;          #Bank 23
+NET  "ddr3_dm[0]"                                LOC = "AP25" ;          #Bank 23
+NET  "ddr3_dm[1]"                                LOC = "AN19" ;          #Bank 22
+NET  "ddr3_dm[2]"                                LOC = "AM21" ;          #Bank 22
+NET  "ddr3_dm[3]"                                LOC = "AG21" ;          #Bank 22
+NET  "ddr3_dqs_p[0]"                             LOC = "AM25" ;          #Bank 23
+NET  "ddr3_dqs_n[0]"                             LOC = "AL25" ;          #Bank 23
+NET  "ddr3_dqs_p[1]"                             LOC = "AG22" ;          #Bank 22
+NET  "ddr3_dqs_n[1]"                             LOC = "AH22" ;          #Bank 22
+NET  "ddr3_dqs_p[2]"                             LOC = "AM20" ;          #Bank 22
+NET  "ddr3_dqs_n[2]"                             LOC = "AL20" ;          #Bank 22
+NET  "ddr3_dqs_p[3]"                             LOC = "AK21" ;          #Bank 22
+NET  "ddr3_dqs_n[3]"                             LOC = "AJ21" ;          #Bank 22
+NET  "ddr3_ck_p[0]"                              LOC = "AN27" ;          #Bank 23
+NET  "ddr3_ck_n[0]"                              LOC = "AM27" ;          #Bank 23
+
+
+CONFIG INTERNAL_VREF_BANK22=0.75;
+CONFIG INTERNAL_VREF_BANK23=0.75;
+
+##################################################################################################
+##The following locations must be reserved and cannot be used for external I/O because          ##
+##the I/O elements associated with these sites (IODELAY, OSERDES, and associated routing)       ##
+##are used to generate and route the clocks necessary for read data capture and synchronization ##
+##to the core clock domain. These pins should not be routed out on the user's PCB               ##
+##################################################################################################
+
+##################################################################################################
+##The logic of this pin is used internally to drive a BUFR in the column. This chosen pin must  ##
+##be a clock pin capable of spanning to all of the banks containing data bytes in the particular##
+##column. That is, all byte groups must be within +/- 1 bank of this pin. This pin cannot be    ##
+##used for other functions and should not be connected externally. If a different pin is chosen,##
+##he corresponding LOC constraint must also be changed.                                         ##
+##################################################################################################
+
+CONFIG PROHIBIT = AH23;
+
+######################################################################################
+##Place RSYNC OSERDES and IODELAY:                                                  ##
+######################################################################################
+
+##Site: AH23 -- Bank 23
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_loop_col0.u_oserdes_rsync"
+  LOC = "OLOGIC_X1Y57";
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_loop_col0.u_odelay_rsync"
+  LOC = "IODELAY_X1Y57";
+
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_loop_col0.u_bufr_rsync"
+  LOC = "BUFR_X1Y2";
+
+##################################################################################################
+##The logic of this pin is used internally to drive a BUFIO for the byte group. Any clock       ##
+##capable pin in the same bank as the data byte group (DQS, DQ, DM if used) can be used for     ##
+##this pin. This pin cannot be used for other functions and should not be connected externally. ##
+##If a different pin is chosen, the corresponding LOC constraint must also be changed.          ##
+##################################################################################################
+
+CONFIG PROHIBIT = AF20,AH25,AK19,AP20;
+
+######################################################################################
+##Place CPT OSERDES and IODELAY:                                                    ##
+######################################################################################
+
+##Site: AH25 -- Bank 23
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[0].u_oserdes_cpt"
+  LOC = "OLOGIC_X1Y63";
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[0].u_odelay_cpt"
+  LOC = "IODELAY_X1Y63";
+
+##Site: AP20 -- Bank 22
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[1].u_oserdes_cpt"
+  LOC = "OLOGIC_X1Y21";
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[1].u_odelay_cpt"
+  LOC = "IODELAY_X1Y21";
+
+##Site: AK19 -- Bank 22
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[2].u_oserdes_cpt"
+  LOC = "OLOGIC_X1Y19";
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[2].u_odelay_cpt"
+  LOC = "IODELAY_X1Y19";
+
+##Site: AF20 -- Bank 22
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[3].u_oserdes_cpt"
+  LOC = "OLOGIC_X1Y17";
+INST "u_memc_ui_top/u_mem_intfc/phy_top0/u_phy_read/u_phy_rdclk_gen/gen_ck_cpt[3].u_odelay_cpt"
+  LOC = "IODELAY_X1Y17";
+
+
+######################################################################################
+## MMCM_ADV CONSTRAINTS                                                             ##
+######################################################################################
+
+INST "u_infrastructure/u_mmcm_adv"      LOC = "MMCM_ADV_X0Y2"; #Banks 13, 23, 33

@@ -1,0 +1,97 @@
+section.styleguide-section#s-helper-classes
+  +sectionHeading("Helper classes")
+
+  .row
+    .col-sm-8
+
+      h2.h3 Clearfix
+      p The <code>.clearfix</code> class is a standard one you might have seen before. Add it to a parent or import it into another class in order to clear the parent element of floats.
+
+      h2.h3 Content visibility
+      p You can control element's visibility using the following classes:
+      ul
+        li <code>.no-show</code> which positions the element outside the viewport with absolute positioning, but doesn't apply <code>display: none</code> to it.
+        li <code>.hidden</code> hides the element with <code>display: none</code>.
+        li <code>.fade</code> coupled with <code>.in</code> hides and shows an element using the <code>opacity</code> property (has a transition effect by default as well).
+
+      h2.h3 Display
+      p You can force an element's display with literal classes <code>.display-block</code>, <code>.display-inline-block</code>, and <code>.display-inline</code>.
+
+      h2.h3 Floats
+      p Mustra uses the following classes to horizontally align elements using floats: <code>.left</code>, <code>.right</code>.
+      p The <code>.center</code> class is used to center a block-level element horizontally, although it requires that the element has a set width.
+
+      h2.h3 Centering blocks vertically
+      p There are two classes available for you to center a block: 
+      ul
+        li #[code .block-center] which will center a block both vertically and horizontally, and 
+        li #[code .block-vcenter] which will only center a block vertically. 
+      p These classes require a relatively positioned parent, and for this you can use the utility #[code .position-relative] class.
+
+      h2.h3 Centering content vertically
+      p There are three classes used to center inline content vertically, intended mostly for use within table cells: 
+      ul
+        li #[code .valign-top]
+        li #[code .valign-bottom]
+        li #[code .valign-center]
+
+      h2.h3 Responsive figures
+      p In order to prevent figures like images and objects overflow their containers, apply one of the following classes: <code>.contain</code>, or <code>img-responsive</code>.
+      p Both classes do the same thing, the first one is specific to Mustra, while the latter is following Bootstrap's convention.
+
+      h2.h3 Responsive videos
+      p In order to maintain aspect ratio of embedded videos, maps, etc. apply <code>.responsive-embed</code> to its container. This class by itself will make the embed a square. There are two additional classes by default mainly menat to be used for videos: 
+      ul
+        li #[code .responsive-embed-16-9], and 
+        li #[code .responsive-embed-4-3]
+
+      figure.responsive-embed.responsive-embed-16-9
+        iframe(width="560", height="315", src="https://www.youtube.com/embed/9NJcNcW1xH4", frameborder="0", allowfullscreen)
+
+      h2.h3 Margins
+      p Mustra supplies you with necessary spacing classes your can use to preserve consistency in your UIs.
+      p The basic formula is: <code>.m[direction]-[size]</code> where the direction can be <code>l</code> (left), <code>t</code> (top), <code>r</code> (right), or <code>b</code> (bottom), and sizes are: <code>xs</code>, <code>sm</code>, <code>base</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>type</code>.
+      p The specific sizing suffix <code>type</code> uses the typographic <code>em</code> value for size (<code>1em</code> by default) and is meant to be used when you e.g. want to insert a custom UI element within longform text, but you want to keep the flow natural.
+      p.quiet.text-sm It's important to note that these classes should not be imported into other classes, as they have the <code>!important</code> flag. They are meant to be used to overcome defaults on a case-by-case basis. In order to keep spacing consistent throughout your UI you should rely on the default spacing variables, and expand from there if you need to.
+
+      h2.h3 Colors
+      p All of the supported coloring options are available to you to use in order to override the current value, for both backgrounds and text: 
+      table.table
+        thead
+          tr
+            th Text
+            th Backgrounds
+            th Result
+        tbody
+          tr
+            td #[code .text-light]
+            td #[code .bg-light]
+            td Inverted color (white)
+          tr
+            td #[code .text-default]
+            td #[code .bg-text]
+            td Default text color
+          tr
+            td #[code .text-primary]
+            td #[code .bg-primary]
+            td Primary color
+          tr
+            td #[code .text-sucess]
+            td #[code .bg-sucess]
+            td Sucess color
+          tr
+            td #[code .text-danger]
+            td #[code .bg-danger]
+            td Danger color
+          tr
+            td #[code .text-warning]
+            td #[code .bg-warning]
+            td Warning color
+          tr
+            td #[code .text-shaded]
+            td #[code .bg-shaded]
+            td Shaded color
+
+    .col-sm-4
+      .styleguide-content
+        p These are the helper classes available in Mustra by default. They are extremely useful for fine-grained control of your UI, and when writing a special class isn't possible or optimal.

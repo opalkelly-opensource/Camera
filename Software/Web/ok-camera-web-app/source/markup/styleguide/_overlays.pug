@@ -1,0 +1,26 @@
+section.styleguide-section#s-overlays
+  +sectionHeading("Overlays")
+
+  .row
+    .col-sm-8
+      a(href="#my-overlay", data-toggle="modal") Toggle overlay
+    .col-sm-4
+      .styleguide-content
+        p Custom overlay styles based on Bootstrap modal library.
+
+aside.overlay.fade#my-overlay(role="dialog", aria-label="My Overlay", tabindex="-1")
+
+    .overlay-content.modal-dialog(role="document")
+
+      a.overlay-close(href="#", data-dismiss="modal" aria-label="Close")
+        +icon("cross")
+
+      h3.overlay-title Title
+
+      .overlay-content-inner
+
+        .container
+
+          .mt-lg.mb-lg
+            .box.box-default
+              p Overlay content.

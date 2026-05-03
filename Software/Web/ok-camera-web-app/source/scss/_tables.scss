@@ -1,0 +1,178 @@
+// MUSTRA TABLES
+//
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: $spacing-type;
+
+  caption {
+    @extend .upcase;
+    color: $color-quiet;
+    margin-bottom: $spacing-sm;
+    text-align: left;
+    font-size: $font-size-xs;
+  }
+
+  th,
+  td {
+    padding: $spacing-sm;
+    border-bottom: 2px solid $color-text;
+    text-align: left;
+  }
+
+  th {
+    @extend .upcase;
+    background-color: $color-shaded;
+  }
+
+  tfoot td {
+    color: $color-quiet;
+    font-size: $font-size-sm;
+    border-bottom: none;
+  }
+}
+
+//
+// Variations
+//
+
+.table-datatable {
+  font-size: $font-size-sm;
+
+  th,
+  td {
+    border: 1px solid $color-text;
+    padding: $spacing-xs $spacing-sm;
+  }
+
+  th {
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: inherit;
+  }
+
+  tfoot td {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+//
+// Responsive tables
+//
+
+.table-responsive-wrapper {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+// Responsive tables
+//
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
+// by enabling horizontal scrolling. Only applies <768px. Everything above that
+// will display normally.
+
+.table-responsive-wrapper {
+  > .table {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: $screen-sm-max) {
+    display: block;
+    margin-bottom: $spacing-type;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    // Tighten up spacing
+    > .table {
+      margin-bottom: 0;
+
+      // Ensure the content doesn't wrap
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > th,
+          > td {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+
+//
+// Responsive tables
+//
+// This solution uses `td(data-label="Row label")`
+// for the row label/header on smaller screens
+// Source: https://codepen.io/joshnh/pen/vOxxQX?editors=110
+//
+
+.table-responsive {
+
+  // Make "rows" with 2 columns
+  @media (max-width: $screen-md-max) {
+    // Hide column labels
+    thead tr {
+      position: absolute;
+      top: -9999em;
+      left: -9999em;
+    }
+
+    tbody {
+      tr {
+        border: 2px solid $color-text;
+
+        // Leave a space between table rows
+        + tr {
+          margin-top: $spacing-base;
+        }
+      }
+
+      // Get table cells to act like rows
+      tr,
+      td {
+        display: block;
+      }
+
+      td {
+        // Make column header
+        &:before {
+          display: inline-block;
+          content: attr(data-label);text-align: left;
+          text-transform: uppercase;
+          font-weight: $font-weight-bold;
+          font-size: $font-size-xs;
+          width: 50%;
+        }
+
+        // Remove border on the bottom "row"
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Stack rows on small screens
+  @media (max-width: 480px) {
+    tbody {
+      td {
+        &:before {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

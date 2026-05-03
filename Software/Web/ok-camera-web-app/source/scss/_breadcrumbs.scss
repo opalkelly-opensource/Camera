@@ -1,0 +1,90 @@
+// MUSTRA BREADCRUMBS
+//
+// Breadcrumbs are responsive and on smaller screens
+// items are moved to the dropdown menu
+
+// Container
+.breadcrumbs {
+  padding-left: 0;
+
+  @media (min-width: $screen-sm) {
+    margin-bottom: 0;
+  }
+}
+
+// Item
+.breadcrumb-item {
+  display: inline;
+  position: relative;
+  margin-right: $breadcrumbs-item-spacing-x;
+  margin-left: $breadcrumbs-item-spacing-x;
+
+  // Remove margin on the first element
+  &:first-child {
+    margin-left: 0;
+  }
+
+  // Add separator
+  &:after {
+    position: absolute;
+    right: -$breadcrumbs-item-spacing-x;
+    content: $breadcrumbs-separator;
+    color: $breadcrumbs-separator-color;
+  }
+
+  // Remove separator on the last element
+  &:last-child:after {
+    content: "";
+  }
+
+  // Remove styles from nested ol
+  &:before {
+    display: none !important;
+  }
+}
+
+// Link
+.breadcrumb-link {
+  @include link-variant($breadcrumbs-link-color, $breadcrumbs-link-hover-color);
+}
+
+// More action
+.breadcrumb-more {
+  position: relative;
+
+  // Fix
+  .dropdown-backdrop {
+    display: none;
+  }
+}
+
+// Breadcrumbs dropdown (for responsive version)
+.breadcrumbs-dropdown-menu {
+  width: auto;
+  padding-left: 0;
+
+  .breadcrumb-item {
+    position: relative;
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+    list-style-type: none;
+    white-space: nowrap;
+    z-index: $zindex-dropdown-item;
+
+    // Remove separator
+    &:after {
+      display: none;
+    }
+  }
+
+  .breadcrumb-link {
+    display: block;
+    padding: $spacing-sm $spacing-base;
+
+    &:hover,
+    &:focus {
+      background-color: $color-shaded;
+    }
+  }
+}

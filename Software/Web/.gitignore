@@ -1,0 +1,6 @@
+/.cache/
+/bitfiles/
+/dist/
+/lib/
+/node_modules/
+/srv/

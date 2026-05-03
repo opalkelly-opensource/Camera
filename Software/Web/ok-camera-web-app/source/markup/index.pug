@@ -1,0 +1,108 @@
+extends partials/layout
+
+append meta
+  - var title = "Mustra styleguide";
+  - var useDotHTMLExtension = false;
+
+//- Add an additional stylesheet needed for the styleguide
+prepend styles
+  link(rel="stylesheet", href=cssPath + "styleguide.css")
+
+//- Mixins for the styleguide
+mixin sectionHeading(name)
+  h1.styleguide-divider
+    =name
+    span.styleguide-divider-actions.fade
+      a(href="#top", data-action="scroll", class="button button-xs button-default") back to top
+
+block content
+
+  #top
+
+    include styleguide/_page-header
+
+  .container.mb-xl
+
+    section.styleguide-section
+      +sectionHeading("Navigation")
+
+      .row
+        .col-sm-3.col-sm-offset-3
+          p.upcase This guide
+          ul.list-unstyled
+            +sectionLink('#s-colors', 'Colors')
+            +sectionLink('#s-font-families', 'Font families')
+            +sectionLink('#s-titles', 'Titles')
+            // +sectionLink('#s-breadcrumbs', 'Breadcrumbs')
+            +sectionLink('#s-textual-elements', 'Textual elements')
+            +sectionLink('#s-lists', 'Lists')
+            +sectionLink('#s-forms', 'Forms')
+            +sectionLink('#s-buttons', 'Buttons')
+            // +sectionLink('#s-tables', 'Tables')
+            +sectionLink('#s-boxes', 'Boxes')
+            +sectionLink('#s-messages', 'Messages')
+            +sectionLink('#s-media-object', 'Media object')
+            // +sectionLink('#s-tabs', 'Tabs')
+            // +sectionLink('#s-collapse', 'Collapse & Accordion')
+            // +sectionLink('#s-dropdowns', 'Dropdowns')
+            // +sectionLink('#s-overlays', 'Overlays')
+            // +sectionLink('#s-drawers', 'Drawers')
+            // +sectionLink('#s-carousels', 'Carousels')
+            +sectionLink('#s-flexbox-grid', 'Flexbox grid')
+            +sectionLink('#s-helper-classes', 'Helper classes')
+            +sectionLink('#s-ui-elements', 'UI elements')
+        .col-sm-3
+          p.upcase Mockups
+          ul.list-unstyled
+            li
+              a(href="connect-to-server.html") Connect to server
+            li
+              a(href="add-bitfile.html") Add a bitfile
+            li
+              a(href="add-bitfile-added.html") Bitfile added
+            li
+              a(href="add-bitfile-added-alert.html") Bitfile added with alert
+            li
+              a(href="app.html") App
+
+    include styleguide/_colors
+
+    include styleguide/_font-families
+
+    include styleguide/_titles
+
+    // include styleguide/_breadcrumbs
+
+    include styleguide/_textual-elements
+
+    include styleguide/_lists
+
+    include styleguide/_forms
+
+    include styleguide/_buttons
+
+    // include styleguide/_tables
+
+    include styleguide/_boxes
+
+    include styleguide/_messages
+
+    include styleguide/_media-object
+
+    // include styleguide/_tabs
+
+    // include styleguide/_collapse
+
+    // include styleguide/_dropdowns
+
+    // include styleguide/_overlays
+
+    // include styleguide/_drawers
+
+    // include styleguide/_carousels
+
+    include styleguide/_grid
+
+    include styleguide/_helper-classes
+
+    include styleguide/_ui-elements

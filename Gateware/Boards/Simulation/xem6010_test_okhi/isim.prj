@@ -1,0 +1,34 @@
+verilog work  ../../MIG/iodrp_controller.v
+verilog work  ../../MIG/iodrp_mcb_controller.v
+verilog work  ../../MIG/mcb_raw_wrapper.v
+verilog work  ../../MIG/mcb_soft_calibration.v
+verilog work  ../../MIG/mcb_soft_calibration_top.v
+verilog work  ../../MIG/memc_wrapper.v
+verilog work  ../../MIG/mcb_ui_top.v
+verilog work  ../../infrastructure.v
+verilog work $XILINX/verilog/src/glbl.v
+verilog work ./oksim/okWireOR.v
+verilog work ./oksim/okWireIn.v
+verilog work ./oksim/okWireOut.v
+verilog work ./oksim/okTriggerOut.v
+verilog work ./oksim/okTriggerIn.v
+verilog work ./oksim/okPipeOut.v
+verilog work ./oksim/okPipeIn.v
+verilog work ./oksim/okHost.v
+verilog work ../../xem6010.v
+verilog work ../../sync_reset.v
+verilog work ../../sensor_clks.v
+verilog work ../../image_if.v
+verilog work ../../host_if.v
+verilog work ../../i2cController.v
+verilog work ../../okDRAM16X8D.v
+verilog work ../../Core/fifo_w64_512_r16_2048.v
+verilog work ../../Core/fifo_w12_512_r48_128.v
+verilog work ./test_tf.v
+verilog work ../sensor_sim.v
+verilog work ../ddr2_model_c3.v -d x1Gb -d sg3 -d x16 -i ./
+
+
+
+
+

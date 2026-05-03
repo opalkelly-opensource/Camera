@@ -1,0 +1,4 @@
+verilog work ../i2cController.v
+verilog work ../okDRAM16X8D.v
+verilog work ./i2c_tf.v
+verilog work ./glbl.v

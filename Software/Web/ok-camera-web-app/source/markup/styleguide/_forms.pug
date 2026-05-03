@@ -1,0 +1,297 @@
+section.styleguide-section#s-forms
+  +sectionHeading("Forms")
+
+  .row.mb-xl
+    .col-sm-8
+      form
+        .form-group
+          label(for="exampleInputText1").form-control-label Full name
+          input(type="email" id="exampleInputText1" placeholder="Enter your name").form-control
+
+        .form-group
+          label(for="exampleInputEmail1").form-control-label Email address
+          input(type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email").form-control
+          .form-text#emailHelp We'll never share your email with anyone else.
+
+        .form-group
+          label(for="exampleSelect1").form-control-label Country
+          select(id="exampleSelect1").form-control
+            option Country #1
+            option Country #2
+            option Country #3
+            option Country #4
+            option Country #5
+
+        .form-group
+          label(for="exampleTextarea1").form-control-label Message
+          textarea(id="exampleTextarea1", rows="5", placeholder="Enter message").form-control
+
+        .form-group
+          .form-check
+            label.form-check-label
+              input(type="radio" name="optionsRadios1" id="optionsRadios1-1" value="option1" checked).form-check-input
+              | Option one is this and that - be sure to include why it's great Option one is this and that - be sure to include why it's great
+
+          .form-check
+            label.form-check-label
+              input(type="radio" name="optionsRadios1" id="optionsRadios1-2" value="option2").form-check-input
+              | Option two can be something else and selecting it will deselect option one Option one is this and that - be sure to include why it's great
+
+          .form-toggle
+            .toggle-bg
+                input(type="radio" name="boolean" value="boolean-3")
+                input(type="radio" name="boolean" value="boolean-4")
+                .switch
+            .toggle-label This is a boolean toggle form control
+
+          .form-check.is-disabled
+            label.form-check-label
+              input(type="radio" name="optionsRadios1" id="optionsRadios1-3" value="option3" disabled).form-check-input
+              | Option three is disabled
+
+          .form-check
+            label.form-check-label
+              input(type="checkbox").form-check-input
+              | Check me out
+
+        .form-group
+          label(for="exampleInputEmail1Disabled").form-control-label Email address
+          input(type="email" id="exampleInputEmail1Disabled" placeholder="Enter email" disabled).form-control
+
+        .form-group
+          label Email address
+          p.form-control-static email@example.com
+
+        .form-actions
+          button(type="submit").button.button-primary Submit
+          a(href="#") Cancel
+
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Default form styles
+        p Default/vertical/stacked form styles with label, field and form text.
+
+  .row.mb-xl
+    .col-sm-8
+      form.form-horizontal
+        .form-group.row
+          label(for="exampleInputText2").col-sm-4.form-control-label Full name
+          .col-sm-8
+            input(type="email" id="exampleInputText2" placeholder="Enter your name").form-control
+
+        .form-group.row
+          label(for="exampleInputEmail2").col-sm-4.form-control-label Email address
+          .col-sm-8
+            input(type="email" id="exampleInputEmail2" aria-describedby="emailHelp2" placeholder="Enter email").form-control
+            .form-text#emailHelp2 We'll never share your email with anyone else.
+
+        .form-group.row
+          label(for="exampleSelect2").col-sm-4.form-control-label Country
+          .col-sm-8
+            select(id="exampleSelect2").form-control
+              option Country #1
+              option Country #2
+              option Country #3
+              option Country #4
+              option Country #5
+
+        .form-group.row
+          label(for="exampleTextarea2").col-sm-4.form-control-label Example textarea
+          .col-sm-8
+            textarea(id="exampleTextarea2", rows="3", placeholder="Enter message").form-control
+
+        .form-group.row
+          .form-check.col-sm-8.col-sm-offset-4
+            label.form-check-label
+              input(type="radio" name="optionsRadios2" id="optionsRadios2-1" value="option1" checked).form-check-input
+              | Option one is this and that - be sure to include why it's great
+
+          .form-check.col-sm-8.col-sm-offset-4
+            label.form-check-label
+              input(type="radio" name="optionsRadios2" id="optionsRadios2-2" value="option2").form-check-input
+              | Option two can be something else and selecting it will deselect option one
+
+          .col-sm-8.col-sm-offset-4
+            .form-toggle
+              .toggle-bg
+                  input(type="radio" name="boolean" value="boolean-3")
+                  input(type="radio" name="boolean" value="boolean-4")
+                  .switch
+              .toggle-label This is a boolean toggle form control
+
+          .col-sm-8.col-sm-offset-4.form-check.is-disabled
+            label.form-check-label
+              input(type="radio" name="optionsRadios2" id="optionsRadios2-3" value="option3" disabled).form-check-input
+              | Option three is disabled
+
+          .form-check.col-sm-8.col-sm-offset-4
+            label.form-check-label
+              input(type="checkbox").form-check-input
+              | Check me out
+
+        .form-group.row
+          label(for="exampleInputEmail2Disabled").col-sm-4.form-control-label Email address
+          .col-sm-8
+            input(type="email" id="exampleInputEmail2Disabled" placeholder="Enter email" disabled).form-control
+
+        .form-group.row
+          label.col-sm-4.form-control-label Email address
+          .col-sm-8
+            p.form-control-static email@example.com
+
+        .row
+          .col-sm-8.col-sm-offset-4
+            .form-actions
+              button(type="submit").button.button-primary Submit
+              a(href="#") Cancel
+
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Horizontal form
+        p Form with labels and fileds on one line. The layout utilizes the existing #[a(href="#s-flexbox-grid", data-scroll="smooth") grid system] for the columns, all you need to do is to add a class #[code .form-horizontal] to the form or any other parent wrapper element for the proper alignment of the labels.
+
+  .row.mb-xl
+    .col-sm-8
+      form.form-inline
+        .form-group
+          label(for="inputPasswordInline") Password
+          input(type="password" id="inputPasswordInline" aria-describedby="passwordHelpInline" placeholder="Enter password").form-control.ml-base.mr-base
+          #passwordHelpInline.text-sm.text-quiet Must be 8-20 characters long.
+
+      form.form-inline.mt-base
+        .form-check.form-check-inline
+          label.form-check-label
+            input(type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1").form-check-input
+            | Option #1
+
+        .form-check.form-check-inline
+          label.form-check-label
+            input(type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2").form-check-input
+            | Option #2
+
+        .form-check.form-check-inline
+          label.form-check-label
+            input(type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="option3").form-check-input
+            | Option #3
+
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Form inline
+        p Form with inline labels and fileds (everything is on one line).
+        p Simply add #[code .form-inline] to the form or any other parent wrapper element.
+
+  .row.mb-xl
+    .col-sm-8
+      .form-group
+        input(type="text" placeholder=".form-control-lg").form-control.form-control-lg
+
+      .form-group
+        input(type="text" placeholder="Default input").form-control
+
+      .form-group
+        input(type="text" placeholder=".form-control-sm").form-control.form-control-sm
+
+    .col-sm-4
+      .styleguide-content
+        p Various form control sizes
+
+  .row.mb-xl
+    .col-sm-8
+      .form-group.has-success
+        label(for="inputSuccess1").form-control-label Input with success
+        input(type="text" id="inputSuccess1").form-control
+        .form-control-feedback Success! You've done it.
+        .form-text Example help text that remains unchanged.
+
+      .form-group.has-danger
+        label(for="inputDanger1").form-control-label Input with danger
+        input(type="text" id="inputDanger1").form-control
+        .form-control-feedback Sorry, that username's taken. Try another?
+        .form-text Example help text that remains unchanged.
+
+      .form-group
+        .form-check.has-success
+          label.form-check-label
+            input(type="radio" name="radioWarning" value="option1").form-check-input
+            | Radio with success
+
+        .form-check.has-warning
+          label.form-check-label
+            input(type="radio" name="radioWarning" value="option2").form-check-input
+            | Radio with warning
+
+        .form-check.has-danger
+          label.form-check-label
+            input(type="checkbox" value="option3").form-check-input
+            | Checkbox with danger
+
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Form validation
+        p Validation errors and messages.
+        p Just add class #[code .has-success] or #[code .has-danger] to the #[code .form-group] or any other wrapper element.
+
+  .row.mb-xl
+    .col-sm-8
+      h3 Range sliders 
+      .form-group
+        .range-with-values
+          span.range-min 0
+          span.range-slider
+            input(type="range" min="0" max="100")
+          span.range-max 100
+
+    .col-sm-8
+      .styleguide-content
+        p These are native controls styled a bit. They require JS in order to display the value. 
+
+  //- .row
+  //-   .col-sm-8
+  //-     form
+  //-       .input-group
+  //-         span.input-group-addon#basic-addon1 @
+  //-         input(type="text" placeholder="Username" aria-describedby="basic-addon1").form-control
+
+  //-       br
+
+  //-       .input-group
+  //-         input(type="text" placeholder="Recipient's username" aria-describedby="basic-addon2").form-control
+  //-         span.input-group-addon#basic-addon2 @example.com
+
+  //-       br
+
+  //-       label Your vanity URL
+  //-       .input-group
+  //-         span.input-group-addon#basic-addon3 https://example.com/users/
+  //-         input(type="text" aria-describedby="basic-addon3" placeholder="username").form-control
+
+  //-       br
+
+  //-       .input-group
+  //-         span.input-group-addon $
+  //-         input(type="text" aria-label="Amount (to the nearest dollar)" placeholder="100").form-control
+  //-         span.input-group-addon .00
+
+  //-       br
+
+  //-       .input-group
+  //-         span.input-group-addon $
+  //-         span.input-group-addon 0.00
+  //-         input(type="text" aria-label="Amount (to the nearest dollar)").form-control
+
+  //-       br
+
+  //-       .input-group
+  //-         input(type="email" placeholder="Enter email address").form-control
+  //-         span.input-group-btn
+  //-           button(type="submit").button.button-primary Subscribe
+
+  //-   .col-sm-4
+  //-     .styleguide-content
+  //-       p
+  //-         strong Input groups
+  //-       p Easily extend form controls by adding text or buttons on either side of textual inputs.

@@ -1,0 +1,66 @@
+section.styleguide-section#s-textual-elements
+  +sectionHeading("Textual elements")
+
+  .row.mb-md
+    .col-sm-8
+      p.lead Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    .col-sm-4
+      .styleguide-content
+        p Style for leading, and standard body copy.
+  .row.mb-md
+    .col-sm-8
+      ul.list-inline-block
+        li
+          a(href="http://funnelnow.com") Standard link
+        li
+          a(href="http://funnelnow.com", class="underline") Standard underlined link
+        li
+          a(href="http://funnelnow.com", class="link-quiet") Quiet link
+        li
+          a(href="http://funnelnow.com", class="link-ui") UI link
+        li
+          strong Bold text with <code>strong</code>
+        li
+          span.strong Bold text with class <code>.strong</code>
+        li
+          span.upcase Uppercase text
+        li
+          span.num 1234567890
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Inline styles
+        p Styles for various often-used inline elements.
+  .row.mb-md
+    .col-sm-8
+      p.text-lg Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      p.text-md Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      p.text-sm Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      p.text-xs Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    .col-sm-4
+      .styleguide-content
+        p Styles for text sizing, enforces font size. Classes are <code>.text-lg</code>, <code>.text-md</code>, <code>.text-base</code> (for reset), <code>.text-sm</code> and <code>.text-xs</code>.
+        p It's important to note that the text sizing classes shouldn't be included into other classes as they contain the <code>!important</code> flag.
+  .row.mb-md
+    .col-sm-8
+      p.text-quiet Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    .col-sm-4
+      .styleguide-content
+        p Quiet text, enforces color and can be combined with other elements.
+  .row.mb-md
+    .col-sm-8
+      p.txtl Left-Aligned text.
+      p.txtc Center-Aligned text.
+      p.txtr Right-Aligned text.
+    .col-sm-4
+      .styleguide-content
+        p Text flow control. It's important to note that the text align classes shouldn't be included into other classes as they contain the <code>!important</code> flag.
+  .row
+    .col-sm-4
+      p.text-overflow Some really long sentence that will be truncated.
+    .col-sm-4.col-sm-offset-4
+      .styleguide-content
+        p Text overflow control. Just wrap your text into #[code .text-truncate] element.
+        p #[strong Note:] Please note that in some cases, due the specific browser's width calculations, this solution might not work as expected.

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+  <head>
+    <title>Mustra - Mustra styleguide</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="The front-end starter kit from Superawesome">
+    <meta name="author" content="sprawsm.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:url" content="https://www.sprawsm.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mustra - Mustra styleguide">
+    <meta property="og:description" content="The front-end starter kit from Superawesome">
+    <meta property="og:site_name" content="Mustra">
+    <meta property="og:image" content="https://www.sprawsm.com/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="fb:admins" content="">
+    <meta property="fb:app_id" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@sprawsm">
+    <meta name="twitter:author" content="@sprawsm">
+    <meta name="twitter:creator" content="@sprawsm">
+    <meta name="twitter:title" content="Mustra - Mustra styleguide">
+    <meta name="twitter:description" content="The front-end starter kit from Superawesome">
+    <meta name="twitter:image" content="https://www.sprawsm.com/assets/images/og-image.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicons//apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicons//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicons//favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/images/favicons/favicon.ico">
+    <link rel="manifest" href="assets/images/favicons//site.webmanifest">
+    <link rel="mask-icon" href="assets/images/favicons//safari-pinned-tab.svg" color="#0075FF">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="dns-prefetch" href="//sprawsm.com">
+    <link rel="dns-prefetch" href="//use.typekit.net">
+    <link rel="stylesheet" href="assets/css/styleguide.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage">
+    <div id="top">
+      <header class="page-header">
+        <div class="container"><a class="page-header-logo" href="/"><img src="assets/images/ok-camera-logo.png" width="197" height="70" alt="OK Camera by Opal Kelly"></a></div>
+      </header>
+    </div>
+    <div class="container mb-xl">
+      <section class="styleguide-section">
+        <h1 class="styleguide-divider">Navigation<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-3 col-sm-offset-3">
+            <p class="upcase">This guide</p>
+            <ul class="list-unstyled">
+                <li><a href="#s-colors" data-action="scroll">Colors</a></li>
+                <li><a href="#s-font-families" data-action="scroll">Font families</a></li>
+                <li><a href="#s-titles" data-action="scroll">Titles</a></li>
+              <!-- +sectionLink('#s-breadcrumbs', 'Breadcrumbs')-->
+                <li><a href="#s-textual-elements" data-action="scroll">Textual elements</a></li>
+                <li><a href="#s-lists" data-action="scroll">Lists</a></li>
+                <li><a href="#s-forms" data-action="scroll">Forms</a></li>
+                <li><a href="#s-buttons" data-action="scroll">Buttons</a></li>
+              <!-- +sectionLink('#s-tables', 'Tables')-->
+                <li><a href="#s-boxes" data-action="scroll">Boxes</a></li>
+                <li><a href="#s-messages" data-action="scroll">Messages</a></li>
+                <li><a href="#s-media-object" data-action="scroll">Media object</a></li>
+              <!-- +sectionLink('#s-tabs', 'Tabs')-->
+              <!-- +sectionLink('#s-collapse', 'Collapse & Accordion')-->
+              <!-- +sectionLink('#s-dropdowns', 'Dropdowns')-->
+              <!-- +sectionLink('#s-overlays', 'Overlays')-->
+              <!-- +sectionLink('#s-drawers', 'Drawers')-->
+              <!-- +sectionLink('#s-carousels', 'Carousels')-->
+                <li><a href="#s-flexbox-grid" data-action="scroll">Flexbox grid</a></li>
+                <li><a href="#s-helper-classes" data-action="scroll">Helper classes</a></li>
+                <li><a href="#s-ui-elements" data-action="scroll">UI elements</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-3">
+            <p class="upcase">Mockups</p>
+            <ul class="list-unstyled">
+              <li><a href="connect-to-server.html">Connect to server</a></li>
+              <li><a href="add-bitfile.html">Add a bitfile</a></li>
+              <li><a href="add-bitfile-added.html">Bitfile added</a></li>
+              <li><a href="add-bitfile-added-alert.html">Bitfile added with alert</a></li>
+              <li><a href="app.html">App</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-colors">
+        <h1 class="styleguide-divider">Colors<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <p>Backgrounds:</p>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-text text-light txtc text-sm"><span>@color-text</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-shaded txtc text-sm"><span>@color-shaded</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-primary text-light txtc text-sm"><span>@color-primary</span></div>
+              </div>
+            </div>
+            <div class="row mb-type">
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-success txtc text-sm"><span>@color-success</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-danger txtc text-sm"><span>@color-danger</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-warning txtc text-sm"><span>@color-warning</span></div>
+              </div>
+            </div>
+            <div class="row mb-type">
+              <div class="col-xs-4 col-xs-offset-4">
+                <div class="styleguide-grid-cell bg-gradient text-light txtc text-sm"><span>@color-gradient</span></div>
+              </div>
+            </div>
+            <p>This sentence has a couple of <strong class="highlight">highlighted words</strong>.</p>
+            <p>Text:</p>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-text text-light txtc text-sm"><span>@color-light</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-text text-shaded txtc text-sm"><span>@color-shaded</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-light text-primary txtc text-sm"><span>@color-primary</span></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-light text-success txtc text-sm"><span>@color-success</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-light text-danger txtc text-sm"><span>@color-danger</span></div>
+              </div>
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell bg-light text-warning txtc text-sm"><span>@color-warning</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Mustra maps all colors to a LESS variable, and comes with a vibrant default theme, and some basics covered for you.</p>
+              <p>There are helper classes to color backgrounds (<code>.bg-[variable]</code>) and text (<code>.text-[variable]</code>) respectively.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-font-families">
+        <h1 class="styleguide-divider">Font families<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <p><code>&quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;</code></p>
+            <div class="box box-default">
+              <h3 class="quiet upcase mb-sm">Normal</h3>a b c d e f g h i j k l m n o p q r s t u v w x y z <br>
+              A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+              1 2 3 4 5 6 7 8 9 0
+            </div>
+            <div class="box box-default">
+              <h3 class="quiet upcase mb-sm">Bold (400)</h3>
+              <div style="font-weight: bold;">
+                a b c d e f g h i j k l m n o p q r s t u v w x y z <br>
+                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+                1 2 3 4 5 6 7 8 9 0
+              </div>
+            </div>
+            <div class="box box-default">
+              <h3 class="quiet upcase mb-sm">Italic</h3>
+              <div style="font-style: italic;">
+                a b c d e f g h i j k l m n o p q r s t u v w x y z <br>
+                A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+                1 2 3 4 5 6 7 8 9 0
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>By default Mustra uses the designated system font, and if that fails it falls back on the tried and true sans-serif font stack.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-titles">
+        <h1 class="styleguide-divider">Titles<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <p class="pretitle">This is a pretitle element.</p>
+            <h1 class="section-title">Your main, section title.</h1>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Section titles</strong></p>
+              <p>Often used as page headings. This style is also mapped to <code>h1</code> and <code>.h1</code>.</p>
+              <p>They have no top margin, so you don't have to pay attention to margin collapsing. Utilize the spacing classes accordingly.</p>
+              <p>This example illustrates a title accompanied with a pre-title element which is completely optional.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <h1 class="title">This is a standard title.</h1>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Titles</strong></p>
+              <p>Use them as titles for your text. This style is also mapped to <code>h2</code> and <code>.h2</code>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <h3>A Subtitle</h3>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Subtitles</strong></p>
+              <p>This style is also mapped to <code>.h3</code> and is best used within text for more granular separation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- include styleguide/_breadcrumbs-->
+      <section class="styleguide-section" id="s-textual-elements">
+        <h1 class="styleguide-divider">Textual elements<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <p class="lead">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Style for leading, and standard body copy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <ul class="list-inline-block">
+              <li><a href="http://funnelnow.com">Standard link</a></li>
+              <li><a class="underline" href="http://funnelnow.com">Standard underlined link</a></li>
+              <li><a class="link-quiet" href="http://funnelnow.com">Quiet link</a></li>
+              <li><a class="link-ui" href="http://funnelnow.com">UI link</a></li>
+              <li><strong>Bold text with <code>strong</code></strong></li>
+              <li><span class="strong">Bold text with class <code>.strong</code></span></li>
+              <li><span class="upcase">Uppercase text</span></li>
+              <li><span class="num">1234567890</span></li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Inline styles</strong></p>
+              <p>Styles for various often-used inline elements.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-md">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Styles for text sizing, enforces font size. Classes are <code>.text-lg</code>, <code>.text-md</code>, <code>.text-base</code> (for reset), <code>.text-sm</code> and <code>.text-xs</code>.</p>
+              <p>It's important to note that the text sizing classes shouldn't be included into other classes as they contain the <code>!important</code> flag.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <p class="text-quiet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Quiet text, enforces color and can be combined with other elements.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <p class="txtl">Left-Aligned text.</p>
+            <p class="txtc">Center-Aligned text.</p>
+            <p class="txtr">Right-Aligned text.</p>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Text flow control. It's important to note that the text align classes shouldn't be included into other classes as they contain the <code>!important</code> flag.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <p class="text-overflow">Some really long sentence that will be truncated.</p>
+          </div>
+          <div class="col-sm-4 col-sm-offset-4">
+            <div class="styleguide-content">
+              <p>Text overflow control. Just wrap your text into <code>.text-truncate</code> element.</p>
+              <p><strong>Note:</strong> Please note that in some cases, due the specific browser's width calculations, this solution might not work as expected.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-lists">
+        <h1 class="styleguide-divider">Lists<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <ul>
+              <li>List item 1</li>
+              <li>List item 2
+                <ul>
+                  <li>List item 2.1</li>
+                </ul>
+              </li>
+              <li>List item 3</li>
+            </ul>
+            <ol>
+              <li>List item 1</li>
+              <li>List item 2
+                <ol>
+                  <li>List item 2.2</li>
+                </ol>
+              </li>
+              <li>List item 3</li>
+            </ol>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Default unordered and ordered lists.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-md">
+          <div class="col-sm-8">
+            <ul class="list-unstyled">
+              <li>List item 1</li>
+              <li>List item 2
+                <ul>
+                  <li>List item 2.1</li>
+                </ul>
+              </li>
+              <li>List item 3</li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Unstyled lists.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <ul class="list-inline">
+              <li>Inline list item 1</li>
+              <li>Inline list item 2</li>
+              <li>Inline list item 3</li>
+            </ul>
+            <ul class="list-inline txtr">
+              <li>Right-aligned inline list</li>
+              <li>Inline list item 2</li>
+              <li>Inline list item 3</li>
+            </ul>
+            <ul class="list-inline-block">
+              <li>Inline-Block list item 1</li>
+              <li>Inline-Block list item 2</li>
+              <li>Inline-Block list item 3</li>
+            </ul>
+            <ul class="list-inline list-middot">
+              <li>Inline list item 1</li>
+              <li>Inline list item 2</li>
+              <li>Inline list item 3</li>
+            </ul>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Inline lists.</strong></p>
+              <p>The two classes provided, while almost identical <code>.list-inline</code> is meant for inline content, such as text, links and such, while <code>.list-inline-block</code> is meant for inline-block flowing content such as buttons, also useful when you don't want to break the list item's content into lines.</p>
+              <p>There is also a possiblity to separate list items with dots.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-forms">
+        <h1 class="styleguide-divider">Forms<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <form>
+              <div class="form-group">
+                <label class="form-control-label" for="exampleInputText1">Full name</label>
+                <input class="form-control" type="email" id="exampleInputText1" placeholder="Enter your name">
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="exampleInputEmail1">Email address</label>
+                <input class="form-control" type="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <div class="form-text" id="emailHelp">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="exampleSelect1">Country</label>
+                <select class="form-control" id="exampleSelect1">
+                  <option>Country #1</option>
+                  <option>Country #2</option>
+                  <option>Country #3</option>
+                  <option>Country #4</option>
+                  <option>Country #5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="exampleTextarea1">Message</label>
+                <textarea class="form-control" id="exampleTextarea1" rows="5" placeholder="Enter message"></textarea>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="optionsRadios1" id="optionsRadios1-1" value="option1" checked>Option one is this and that - be sure to include why it's great Option one is this and that - be sure to include why it's great
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="optionsRadios1" id="optionsRadios1-2" value="option2">Option two can be something else and selecting it will deselect option one Option one is this and that - be sure to include why it's great
+                  </label>
+                </div>
+                <div class="form-toggle">
+                  <div class="toggle-bg">
+                    <input type="radio" name="boolean" value="boolean-3">
+                    <input type="radio" name="boolean" value="boolean-4">
+                    <div class="switch"></div>
+                  </div>
+                  <div class="toggle-label">This is a boolean toggle form control</div>
+                </div>
+                <div class="form-check is-disabled">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="optionsRadios1" id="optionsRadios1-3" value="option3" disabled>Option three is disabled
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox">Check me out
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="exampleInputEmail1Disabled">Email address</label>
+                <input class="form-control" type="email" id="exampleInputEmail1Disabled" placeholder="Enter email" disabled>
+              </div>
+              <div class="form-group">
+                <label>Email address</label>
+                <p class="form-control-static">email@example.com</p>
+              </div>
+              <div class="form-actions">
+                <button class="button button-primary" type="submit">Submit</button><a href="#">Cancel</a>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Default form styles</strong></p>
+              <p>Default/vertical/stacked form styles with label, field and form text.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <form class="form-horizontal">
+              <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="exampleInputText2">Full name</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="email" id="exampleInputText2" placeholder="Enter your name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="exampleInputEmail2">Email address</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="email" id="exampleInputEmail2" aria-describedby="emailHelp2" placeholder="Enter email">
+                  <div class="form-text" id="emailHelp2">We'll never share your email with anyone else.</div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="exampleSelect2">Country</label>
+                <div class="col-sm-8">
+                  <select class="form-control" id="exampleSelect2">
+                    <option>Country #1</option>
+                    <option>Country #2</option>
+                    <option>Country #3</option>
+                    <option>Country #4</option>
+                    <option>Country #5</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="exampleTextarea2">Example textarea</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control" id="exampleTextarea2" rows="3" placeholder="Enter message"></textarea>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="form-check col-sm-8 col-sm-offset-4">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="optionsRadios2" id="optionsRadios2-1" value="option1" checked>Option one is this and that - be sure to include why it's great
+                  </label>
+                </div>
+                <div class="form-check col-sm-8 col-sm-offset-4">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="optionsRadios2" id="optionsRadios2-2" value="option2">Option two can be something else and selecting it will deselect option one
+                  </label>
+                </div>
+                <div class="col-sm-8 col-sm-offset-4">
+                  <div class="form-toggle">
+                    <div class="toggle-bg">
+                      <input type="radio" name="boolean" value="boolean-3">
+                      <input type="radio" name="boolean" value="boolean-4">
+                      <div class="switch"></div>
+                    </div>
+                    <div class="toggle-label">This is a boolean toggle form control</div>
+                  </div>
+                </div>
+                <div class="col-sm-8 col-sm-offset-4 form-check is-disabled">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="optionsRadios2" id="optionsRadios2-3" value="option3" disabled>Option three is disabled
+                  </label>
+                </div>
+                <div class="form-check col-sm-8 col-sm-offset-4">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox">Check me out
+                  </label>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 form-control-label" for="exampleInputEmail2Disabled">Email address</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="email" id="exampleInputEmail2Disabled" placeholder="Enter email" disabled>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 form-control-label">Email address</label>
+                <div class="col-sm-8">
+                  <p class="form-control-static">email@example.com</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-8 col-sm-offset-4">
+                  <div class="form-actions">
+                    <button class="button button-primary" type="submit">Submit</button><a href="#">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Horizontal form</strong></p>
+              <p>Form with labels and fileds on one line. The layout utilizes the existing <a href="#s-flexbox-grid" data-scroll="smooth">grid system</a> for the columns, all you need to do is to add a class <code>.form-horizontal</code> to the form or any other parent wrapper element for the proper alignment of the labels.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <form class="form-inline">
+              <div class="form-group">
+                <label for="inputPasswordInline">Password</label>
+                <input class="form-control ml-base mr-base" type="password" id="inputPasswordInline" aria-describedby="passwordHelpInline" placeholder="Enter password">
+                <div class="text-sm text-quiet" id="passwordHelpInline">Must be 8-20 characters long.</div>
+              </div>
+            </form>
+            <form class="form-inline mt-base">
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio1" value="option1">Option #1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio2" value="option2">Option #2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions1" id="inlineRadio3" value="option3">Option #3
+                </label>
+              </div>
+            </form>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Form inline</strong></p>
+              <p>Form with inline labels and fileds (everything is on one line).</p>
+              <p>Simply add <code>.form-inline</code> to the form or any other parent wrapper element.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+            </div>
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="Default input">
+            </div>
+            <div class="form-group">
+              <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Various form control sizes</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <div class="form-group has-success">
+              <label class="form-control-label" for="inputSuccess1">Input with success</label>
+              <input class="form-control" type="text" id="inputSuccess1">
+              <div class="form-control-feedback">Success! You've done it.</div>
+              <div class="form-text">Example help text that remains unchanged.</div>
+            </div>
+            <div class="form-group has-danger">
+              <label class="form-control-label" for="inputDanger1">Input with danger</label>
+              <input class="form-control" type="text" id="inputDanger1">
+              <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+              <div class="form-text">Example help text that remains unchanged.</div>
+            </div>
+            <div class="form-group">
+              <div class="form-check has-success">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="radioWarning" value="option1">Radio with success
+                </label>
+              </div>
+              <div class="form-check has-warning">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="radioWarning" value="option2">Radio with warning
+                </label>
+              </div>
+              <div class="form-check has-danger">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox" value="option3">Checkbox with danger
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Form validation</strong></p>
+              <p>Validation errors and messages.</p>
+              <p>Just add class <code>.has-success</code> or <code>.has-danger</code> to the <code>.form-group</code> or any other wrapper element.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <h3>Range sliders </h3>
+            <div class="form-group">
+              <div class="range-with-values"><span class="range-min">0</span><span class="range-slider">
+                  <input type="range" min="0" max="100"></span><span class="range-max">100</span></div>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="styleguide-content">
+              <p>These are native controls styled a bit. They require JS in order to display the value. </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-buttons">
+        <h1 class="styleguide-divider">Buttons<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-default" href="#">Default button</a></li>
+              <li>
+                <button class="button button-default" type="submit">Default button</button>
+              </li>
+              <li>
+                <input class="button button-default" type="submit" id="" name="" value="Default button">
+              </li>
+            </ul>
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-primary" href="#">Primary button</a></li>
+              <li>
+                <button class="button button-primary" type="submit">Primary button</button>
+              </li>
+              <li>
+                <input class="button button-primary" type="submit" id="" name="" value="Primary button">
+              </li>
+            </ul>
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-gradient" href="#">Gradient button</a></li>
+              <li>
+                <button class="button button-gradient" type="submit">Gradient button</button>
+              </li>
+              <li>
+                <input class="button button-gradient" type="submit" id="" name="" value="Gradient button">
+              </li>
+            </ul>
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-success" href="#">Success button</a></li>
+              <li>
+                <button class="button button-success" type="submit">Success button</button>
+              </li>
+              <li>
+                <input class="button button-success" type="submit" id="" name="" value="Success button">
+              </li>
+            </ul>
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-danger" href="#">Danger button</a></li>
+              <li>
+                <button class="button button-danger" type="submit">Danger button</button>
+              </li>
+              <li>
+                <input class="button button-danger" type="submit" id="" name="" value="Danger button">
+              </li>
+            </ul>
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-warning" href="#">Warning button</a></li>
+              <li>
+                <button class="button button-warning" type="submit">Warning button</button>
+              </li>
+              <li>
+                <input class="button button-warning" type="submit" id="" name="" value="Warning button">
+              </li>
+            </ul>
+            <div class="box box-default mb-md">
+              <ul class="list-inline-block">
+                <li><a class="button button-invert" href="#">Inverted button</a></li>
+                <li>
+                  <button class="button button-invert" type="submit">Inverted button</button>
+                </li>
+                <li>
+                  <input class="button button-invert" type="submit" id="" name="" value="Inverted button">
+                </li>
+              </ul>
+            </div>
+            <ul class="list-inline-block mb-md">
+              <li>
+                <button class="button button-disabled" type="submit" disabled>Disabled button</button>
+              </li>
+              <li>
+                <input class="button button-disabled" type="submit" id="" name="" value="Disabled button" disabled>
+              </li>
+            </ul>
+            <ul class="list-inline-block mb-md">
+              <li><a class="button button-primary button-xs" href="#">X–Small button</a></li>
+              <li><a class="button button-primary button-sm" href="#">Small button</a></li>
+              <li><a class="button button-primary button-lg" href="#">Large button</a></li>
+            </ul>
+            <p><a class="button button-primary button-block" href="#">Block level button</a></p>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>Various button flavors and sizes.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- include styleguide/_tables-->
+      <section class="styleguide-section" id="s-boxes">
+        <h1 class="styleguide-divider">Boxes<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="box box-default">This is a default box.</div>
+            <div class="box box-default box-bordered">This is a default bordered box.</div>
+            <div class="box box-default box-shadowed">This is a default shadowed box.</div>
+            <div class="box box-primary">This is a primary box.</div>
+            <div class="box box-primary box-bordered">This is a primary bordered box.</div>
+            <div class="box box-primary box-shadowed">This is a primary shadowed box.</div>
+            <div class="box box-warning">This is a warning box.</div>
+            <div class="box box-warning box-bordered">This is a warning bordered box.</div>
+            <div class="box box-warning box-shadowed">This is a warning shadowed box.</div>
+            <div class="box box-success">This is a success box.</div>
+            <div class="box box-success box-bordered">This is a success bordered box.</div>
+            <div class="box box-success box-shadowed">This is a success shadowed box.</div>
+            <div class="box box-danger">This is a danger box.</div>
+            <div class="box box-danger box-bordered">This is a danger bordered box.</div>
+            <div class="box box-danger box-shadowed">This is a danger shadowed box.</div>
+            <div class="box box-bordered">This is a bordered box.</div>
+            <div class="box box-default">
+              <div class="box box-light">This is a light box.</div>
+              <div class="box box-light box-bordered">This is a light bordered box.</div>
+              <div class="box box-light box-shadowed">This is a light shadowed box.</div>
+            </div>
+            <div class="box box-default box-lg">This is a default box with large padding.</div>
+            <div class="box box-default box-sm text-sm">This is a default box with small padding.</div>
+            <div class="box box-default box-nopadding">This is a default box with no padding.</div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Boxes</strong></p>
+              <p>Boxes in various flavors and sizes. Use them when you need to frame some content. Use the <code>.box-nopadding</code> class in case you want to nest a <code>.grid</code> layout within it.</p>
+              <p>By default boxes don't have any margins.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-messages">
+        <h1 class="styleguide-divider">Messages<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <div style="position:relative;height: 80px;border:10px solid #ccc;background-color:#ccc;">
+              <div class="message message-danger txtc">
+                <div class="message-content">This is a danger message.</div>
+              </div>
+            </div>
+            <div style="position:relative;height: 80px;border:10px solid #ccc;background-color:#ccc;">
+              <div class="message message-success txtc">
+                <div class="message-content">This is a success message.</div>
+              </div>
+            </div>
+            <div style="position:relative;height: 90px;border:10px solid #ccc;background-color:#ccc;">
+              <div class="message message-warning txtc">
+                <div class="message-content">This is a warning message.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p><strong>Messages</strong></p>
+              <p>Global message styles. Absolutely positioned to the top of the screen by default. In case you need more layout control feel free to use a Flexbox grid layout instead of <code>.message-content</code>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-media-object">
+        <h1 class="styleguide-divider">Media object<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="media">
+              <div class="media-left">
+                <div class="media-object">Media key</div>
+              </div>
+              <div class="media-body">
+                <p>Media value.</p>
+                <p>Anything can go in here.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>The media element should be used any time you need a key-value pair in a visual sense. This includes a comment+avatar combo, literal key-value pairs (e.g. two-column tables), etc.</p>
+              <p>The key element accepts an image, or text, while the body acts as a standard container. Media element uses flexbox for layout.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- include styleguide/_tabs-->
+      <!-- include styleguide/_collapse-->
+      <!-- include styleguide/_dropdowns-->
+      <!-- include styleguide/_overlays-->
+      <!-- include styleguide/_drawers-->
+      <!-- include styleguide/_carousels-->
+      <section class="styleguide-section" id="s-flexbox-grid">
+        <h1 class="styleguide-divider">Flexbox grid<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-1">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+              <div class="col-xs-11">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-2">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+              <div class="col-xs-10">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+              <div class="col-xs-9">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+              <div class="col-xs-8">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-5">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+              <div class="col-xs-7">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+              <div class="col-xs-6">
+                <div class="styleguide-grid-cell"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>The flexbox-based grid uses the same syntax as the Bootstrap's grid, and supports the same features.</p>
+              <p>The main thing that makes it a better alternative to the old float-based grid is the fact that it's nestable. Other features that set it apart are modern properties that come with flexbox layout model, such as easy vertical centering through <code>.top/middle/bottom-XX</code> classes, ability to define starting points for the grid (we used to revert floats before) through <code>.left/center/right-XX</code>.</p>
+              <p>Find out more at <a href="http://flexboxgrid.com/">flexboxgrid.com</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-helper-classes">
+        <h1 class="styleguide-divider">Helper classes<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row">
+          <div class="col-sm-8">
+            <h2 class="h3">Clearfix</h2>
+            <p>The <code>.clearfix</code> class is a standard one you might have seen before. Add it to a parent or import it into another class in order to clear the parent element of floats.</p>
+            <h2 class="h3">Content visibility</h2>
+            <p>You can control element's visibility using the following classes:</p>
+            <ul>
+              <li><code>.no-show</code> which positions the element outside the viewport with absolute positioning, but doesn't apply <code>display: none</code> to it.</li>
+              <li><code>.hidden</code> hides the element with <code>display: none</code>.</li>
+              <li><code>.fade</code> coupled with <code>.in</code> hides and shows an element using the <code>opacity</code> property (has a transition effect by default as well).</li>
+            </ul>
+            <h2 class="h3">Display</h2>
+            <p>You can force an element's display with literal classes <code>.display-block</code>, <code>.display-inline-block</code>, and <code>.display-inline</code>.</p>
+            <h2 class="h3">Floats</h2>
+            <p>Mustra uses the following classes to horizontally align elements using floats: <code>.left</code>, <code>.right</code>.</p>
+            <p>The <code>.center</code> class is used to center a block-level element horizontally, although it requires that the element has a set width.</p>
+            <h2 class="h3">Centering blocks vertically</h2>
+            <p>There are two classes available for you to center a block: </p>
+            <ul>
+              <li><code>.block-center</code> which will center a block both vertically and horizontally, and </li>
+              <li><code>.block-vcenter</code> which will only center a block vertically. </li>
+            </ul>
+            <p>These classes require a relatively positioned parent, and for this you can use the utility <code>.position-relative</code> class.</p>
+            <h2 class="h3">Centering content vertically</h2>
+            <p>There are three classes used to center inline content vertically, intended mostly for use within table cells: </p>
+            <ul>
+              <li><code>.valign-top</code></li>
+              <li><code>.valign-bottom</code></li>
+              <li><code>.valign-center</code></li>
+            </ul>
+            <h2 class="h3">Responsive figures</h2>
+            <p>In order to prevent figures like images and objects overflow their containers, apply one of the following classes: <code>.contain</code>, or <code>img-responsive</code>.</p>
+            <p>Both classes do the same thing, the first one is specific to Mustra, while the latter is following Bootstrap's convention.</p>
+            <h2 class="h3">Responsive videos</h2>
+            <p>In order to maintain aspect ratio of embedded videos, maps, etc. apply <code>.responsive-embed</code> to its container. This class by itself will make the embed a square. There are two additional classes by default mainly menat to be used for videos: </p>
+            <ul>
+              <li><code>.responsive-embed-16-9</code>, and </li>
+              <li><code>.responsive-embed-4-3</code></li>
+            </ul>
+            <figure class="responsive-embed responsive-embed-16-9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/9NJcNcW1xH4" frameborder="0" allowfullscreen></iframe>
+            </figure>
+            <h2 class="h3">Margins</h2>
+            <p>Mustra supplies you with necessary spacing classes your can use to preserve consistency in your UIs.</p>
+            <p>The basic formula is: <code>.m[direction]-[size]</code> where the direction can be <code>l</code> (left), <code>t</code> (top), <code>r</code> (right), or <code>b</code> (bottom), and sizes are: <code>xs</code>, <code>sm</code>, <code>base</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, and <code>type</code>.</p>
+            <p>The specific sizing suffix <code>type</code> uses the typographic <code>em</code> value for size (<code>1em</code> by default) and is meant to be used when you e.g. want to insert a custom UI element within longform text, but you want to keep the flow natural.</p>
+            <p class="quiet text-sm">It's important to note that these classes should not be imported into other classes, as they have the <code>!important</code> flag. They are meant to be used to overcome defaults on a case-by-case basis. In order to keep spacing consistent throughout your UI you should rely on the default spacing variables, and expand from there if you need to.</p>
+            <h2 class="h3">Colors</h2>
+            <p>All of the supported coloring options are available to you to use in order to override the current value, for both backgrounds and text: </p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Text</th>
+                  <th>Backgrounds</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>.text-light</code></td>
+                  <td><code>.bg-light</code></td>
+                  <td>Inverted color (white)</td>
+                </tr>
+                <tr>
+                  <td><code>.text-default</code></td>
+                  <td><code>.bg-text</code></td>
+                  <td>Default text color</td>
+                </tr>
+                <tr>
+                  <td><code>.text-primary</code></td>
+                  <td><code>.bg-primary</code></td>
+                  <td>Primary color</td>
+                </tr>
+                <tr>
+                  <td><code>.text-sucess</code></td>
+                  <td><code>.bg-sucess</code></td>
+                  <td>Sucess color</td>
+                </tr>
+                <tr>
+                  <td><code>.text-danger</code></td>
+                  <td><code>.bg-danger</code></td>
+                  <td>Danger color</td>
+                </tr>
+                <tr>
+                  <td><code>.text-warning</code></td>
+                  <td><code>.bg-warning</code></td>
+                  <td>Warning color</td>
+                </tr>
+                <tr>
+                  <td><code>.text-shaded</code></td>
+                  <td><code>.bg-shaded</code></td>
+                  <td>Shaded color</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>These are the helper classes available in Mustra by default. They are extremely useful for fine-grained control of your UI, and when writing a special class isn't possible or optimal.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="styleguide-section" id="s-ui-elements">
+        <h1 class="styleguide-divider">UI elements<span class="styleguide-divider-actions fade"><a class="button button-xs button-default" href="#top" data-action="scroll">back to top</a></span>
+        </h1>
+        <div class="row mb-xl">
+          <div class="col-sm-8">
+            <h3>Server statuses</h3>
+            <div class="server-status">
+              <div class="status"> <img class="mr-sm" src="assets/images/status-connected.svg" alt="">Connected to wss://tobias.ok:9999</div>
+              <div class="action ml-base"><a class="button button-gradient button-sm" href="#">Disconnect</a></div>
+            </div>
+            <div class="server-status">
+              <div class="status"> <img class="mr-sm" src="assets/images/status-disconnected.svg" alt="">Disconnected from wss://tobias.ok:9999</div>
+              <div class="action ml-base"><a class="button button-gradient button-sm" href="#">Connect</a></div>
+            </div>
+            <div class="server-status">
+              <div class="status"> <img class="mr-sm" src="assets/images/status-connected.svg" alt="">Configured camera-xem7310.bit</div>
+              <div class="action ml-base"><a class="button button-gradient button-sm" href="#">Reset</a></div>
+            </div>
+            <div class="server-status">
+              <div class="status"> <img class="mr-sm" src="assets/images/status-connected.svg" alt="">Ready Missed Frame: 0</div>
+              <div class="action ml-base"><a class="button button-gradient button-sm" href="#">CMOS Reset</a></div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>This is what we use to display the status of the server.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <h3>Progress bars</h3>
+            <div class="progress-bar">
+              <div class="progress-bar-min">0</div>
+              <div class="progress-bar-track">
+                <div class="progress-bar-value" style="width: 27%;" data-value="27"></div>
+              </div>
+              <div class="progress-bar-max">100</div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="styleguide-content">
+              <p>The progress bar is meant to be controlled programatically by dynamically adjusting the value of the width property within the <code>style</code> attribute, as well as updating the value of the <code>data-value</code> attribute. </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/jquery.throttle-debounce.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/svg4everybody.js"></script>
+    <script>svg4everybody();</script>
+  </body>
+</html>

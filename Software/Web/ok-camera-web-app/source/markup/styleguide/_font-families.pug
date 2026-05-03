@@ -1,0 +1,28 @@
+section.styleguide-section#s-font-families
+  +sectionHeading("Font families")
+
+  .row
+    .col-sm-8
+      p
+        code
+          | &quot;Open Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;
+      .box.box-default
+        h3.quiet.upcase.mb-sm Normal
+        | a b c d e f g h i j k l m n o p q r s t u v w x y z <br>
+        | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+        | 1 2 3 4 5 6 7 8 9 0
+      .box.box-default
+        h3.quiet.upcase.mb-sm Bold (400)
+        div(style="font-weight: bold;")
+          | a b c d e f g h i j k l m n o p q r s t u v w x y z <br>
+          | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+          | 1 2 3 4 5 6 7 8 9 0
+      .box.box-default
+        h3.quiet.upcase.mb-sm Italic
+        div(style="font-style: italic;")
+          | a b c d e f g h i j k l m n o p q r s t u v w x y z <br>
+          | A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br>
+          | 1 2 3 4 5 6 7 8 9 0
+    .col-sm-4
+      .styleguide-content
+        p By default Mustra uses the designated system font, and if that fails it falls back on the tried and true sans-serif font stack.

@@ -1,0 +1,38 @@
+extends partials/layout
+
+append meta
+  - var title = "Add Bitfile";
+  - var useDotHTMLExtension = false;
+
+block content
+
+  .container
+
+    .col-md-6.col-lg-4.block-center.block-center-md
+      .central-box.box.box-light.box-shadowed
+        img.logo-mark(src="assets/images/ok-camera-logomark.png" width="80" height="80" alt="OK Camera")
+        h1.h4.txtc.mt-base.mb-md Add a Bitfile to Configure the Device
+        form(action="")
+          .txtc
+            img(src="assets/images/icon-bitfile.svg" alt="")
+            .mt-base.mb-base camera-xem7310.bit
+          .form-group.mt-md
+            button.button.button-gradient.button-block(type="submit") Connect
+      .mt-base.txtc
+        a(href="https://opalkelly.com/")
+          img(src="assets/images/ok-camera-logo-attribution.svg" alt="By Opal Kelly")
+  
+  a.log-switch.button.button-default.button-sm(href="#" data-toggle="log-switch") See log
+
+  .log.log-hidden#log
+    .log-content
+      a.toggle-log(href="#" data-toggle="log")
+        img(src="assets/images/icon-log-toggle.svg" alt="toggle log" title="toggle log")
+      h2.log-title Log Output
+      pre.log-content-main this is the log's preformatted content
+
+  .alert.alert-danger.fade.in.active <!-- Remove .active to hide -->
+    img(src="assets/images/alert-danger.svg" alt="" width="40" height="40")
+    .alert-content This is the content of the alert. 
+    .alert-actions
+      button.button.button-primary(type="button") Reload App

@@ -1,0 +1,56 @@
+//- META BLOCK
+//- Used for the <head> section of the website.
+//- All variables can be overwritten in any template with `append meta` block
+block meta
+    //- General
+    - var siteName = "Mustra";
+    - var siteUrl = "https://www.sprawsm.com/";
+    - var title = "Front-end starter kit";
+    - var description = "The front-end starter kit from Superawesome";
+    - var author = "sprawsm.com";
+    - var slug = "";
+    - var useDotHTMLExtension = true;
+
+    //- Paths
+    - var assetsPath = "assets/";
+    - var imagesPath = assetsPath + "images/";
+    - var cssPath = assetsPath + "css/";
+    - var jsPath = assetsPath + "js/";
+    - var faviconsPath = imagesPath + "favicons/";
+
+    //- Facebook Open Graph
+    - var includeOpenGraph = true;
+    - var ogType = "website";
+    - var ogSiteName = "Mustra";
+    - var ogImage = "og-image.png";
+    - var ogImageWidth = 1200;
+    - var ogImageHeight = 630;
+    - var fbAdmins = "";
+    - var fbAppId = "";
+
+    //- Twitter Card
+    - var includeTwitterCard = true;
+    - var twtCard = "summary";
+    - var twtSite = "@sprawsm";
+    - var twtAuthor = "@sprawsm";
+    - var twtCreator = "@sprawsm";
+
+    //- Favicons
+    - var safariPinnedTabColor = "#0075FF";
+    - var msApplicationTileColor = "#da532c";
+    - var themeColor = "#ffffff";
+
+    //- DNS Prefetch
+    -
+      var dnsPrefetch = [
+        "//sprawsm.com",
+        "//use.typekit.net"
+      ];
+
+//- Define page title and url extensiton structure (has to be out of the meta block!)
+- var pageTitle = siteName + " - " + title;
+- var urlExtension = useDotHTMLExtension ? ".html" : "";
+
+//- PAGE VARIABLES
+//- Various variables used in template files.
+- var homeUrl = '/';

@@ -1,0 +1,19 @@
+section.styleguide-section#s-messages
+  +sectionHeading("Messages")
+
+  .row
+    .col-sm-8
+      div(style="position:relative;height: 80px;border:10px solid #ccc;background-color:#ccc;")
+        .message.message-danger.txtc
+          .message-content This is a danger message.
+      div(style="position:relative;height: 80px;border:10px solid #ccc;background-color:#ccc;")
+        .message.message-success.txtc
+          .message-content This is a success message.
+      div(style="position:relative;height: 90px;border:10px solid #ccc;background-color:#ccc;")
+        .message.message-warning.txtc
+          .message-content This is a warning message.
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Messages
+        p Global message styles. Absolutely positioned to the top of the screen by default. In case you need more layout control feel free to use a Flexbox grid layout instead of <code>.message-content</code>.

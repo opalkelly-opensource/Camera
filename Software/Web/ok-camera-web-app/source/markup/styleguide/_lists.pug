@@ -1,0 +1,58 @@
+section.styleguide-section#s-lists
+  +sectionHeading("Lists")
+
+  .row.mb-md
+    .col-sm-8
+      ul
+        li List item 1
+        li
+          | List item 2
+          ul
+            li List item 2.1
+        li List item 3
+      ol
+        li List item 1
+        li
+          | List item 2
+          ol
+            li List item 2.2
+        li List item 3
+    .col-sm-4
+      .styleguide-content
+        p Default unordered and ordered lists.
+  .row.mb-md
+    .col-sm-8
+      ul.list-unstyled
+        li List item 1
+        li
+          | List item 2
+          ul
+            li List item 2.1
+        li List item 3
+    .col-sm-4
+      .styleguide-content
+        p Unstyled lists.
+  .row
+    .col-sm-8
+      ul.list-inline
+        li Inline list item 1
+        li Inline list item 2
+        li Inline list item 3
+      ul.list-inline.txtr
+        li Right-aligned inline list
+        li Inline list item 2
+        li Inline list item 3
+      ul.list-inline-block
+        li Inline-Block list item 1
+        li Inline-Block list item 2
+        li Inline-Block list item 3
+      ul.list-inline.list-middot
+        li Inline list item 1
+        li Inline list item 2
+        li Inline list item 3
+    .col-sm-4
+      .styleguide-content
+        p
+          strong Inline lists.
+        p The two classes provided, while almost identical <code>.list-inline</code> is meant for inline content, such as text, links and such, while <code>.list-inline-block</code> is meant for inline-block flowing content such as buttons, also useful when you don't want to break the list item's content into lines.
+        p There is also a possiblity to separate list items with dots.

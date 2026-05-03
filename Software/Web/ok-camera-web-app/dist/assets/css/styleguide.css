@@ -1,0 +1,47 @@
+html, body {
+  overflow: scroll !important;
+}
+
+code {
+  background-color: #e6e6e6;
+  padding: 0 7px 2px 7px;
+  border-radius: 2px;
+  color: #27ab5e;
+}
+
+.styleguide-section {
+  margin-top: 56px;
+}
+
+.styleguide-section:hover .styleguide-divider-actions {
+  opacity: 1;
+}
+
+.styleguide-divider {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 56px;
+  margin-bottom: 56px;
+  padding-top: 7px;
+  border-top: 2px solid #e6e6e6;
+}
+
+.styleguide-divider-actions {
+  float: right;
+  margin-top: -4px;
+}
+
+.styleguide-content {
+  color: #999;
+}
+
+.styleguide-grid-cell {
+  height: 30px;
+  padding: 7px;
+  line-height: 1;
+  background: #e6e6e6;
+  margin: 7px 0;
+  border-radius: 5px;
+}

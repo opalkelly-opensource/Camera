@@ -1,0 +1,56 @@
+section.styleguide-section#s-colors
+  +sectionHeading("Colors")
+
+  .row
+    .col-sm-8
+      p Backgrounds:
+      .row
+        .col-xs-4
+          .styleguide-grid-cell.bg-text.text-light.txtc.text-sm
+            span @color-text
+        .col-xs-4
+          .styleguide-grid-cell.bg-shaded.txtc.text-sm
+            span @color-shaded
+        .col-xs-4
+          .styleguide-grid-cell.bg-primary.text-light.txtc.text-sm
+            span @color-primary
+      .row.mb-type
+        .col-xs-4
+          .styleguide-grid-cell.bg-success.txtc.text-sm
+            span @color-success
+        .col-xs-4
+          .styleguide-grid-cell.bg-danger.txtc.text-sm
+            span @color-danger
+        .col-xs-4
+          .styleguide-grid-cell.bg-warning.txtc.text-sm
+            span @color-warning
+      .row.mb-type
+        .col-xs-4.col-xs-offset-4
+          .styleguide-grid-cell.bg-gradient.text-light.txtc.text-sm
+            span @color-gradient
+      p This sentence has a couple of <strong class="highlight">highlighted words</strong>.
+      p Text:
+      .row
+        .col-xs-4
+          .styleguide-grid-cell.bg-text.text-light.txtc.text-sm
+            span @color-light
+        .col-xs-4
+          .styleguide-grid-cell.bg-text.text-shaded.txtc.text-sm
+            span @color-shaded
+        .col-xs-4
+          .styleguide-grid-cell.bg-light.text-primary.txtc.text-sm
+            span @color-primary
+      .row
+        .col-xs-4
+          .styleguide-grid-cell.bg-light.text-success.txtc.text-sm
+            span @color-success
+        .col-xs-4
+          .styleguide-grid-cell.bg-light.text-danger.txtc.text-sm
+            span @color-danger
+        .col-xs-4
+          .styleguide-grid-cell.bg-light.text-warning.txtc.text-sm
+            span @color-warning
+    .col-sm-4
+      .styleguide-content
+        p Mustra maps all colors to a LESS variable, and comes with a vibrant default theme, and some basics covered for you.
+        p There are helper classes to color backgrounds (<code>.bg-[variable]</code>) and text (<code>.text-[variable]</code>) respectively.

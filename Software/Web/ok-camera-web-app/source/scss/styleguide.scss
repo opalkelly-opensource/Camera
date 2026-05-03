@@ -1,0 +1,54 @@
+@import "_variables";
+
+// MUSTRA STYLEGUIDE
+//
+// This stylesheet is scoped to the styleguide page and should not be included
+// anywhere else.
+
+html, body {
+  overflow: scroll !important;
+}
+
+code {
+  background-color: $color-shaded;
+  padding: 0 $spacing-sm 2px $spacing-sm;
+  border-radius: $border-radius-sm;
+  color: darken($color-success,20%);
+}
+
+.styleguide-section {
+  margin-top: $spacing-xl;
+
+  &:hover .styleguide-divider-actions {
+    opacity: 1;
+  }
+}
+
+.styleguide-divider {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: $spacing-xl;
+  margin-bottom: $spacing-xl;
+  padding-top: $spacing-sm;
+  border-top: 2px solid $color-shaded;
+}
+
+.styleguide-divider-actions {
+  float: right;
+  margin-top: -$spacing-xs;
+}
+
+.styleguide-content {
+  color: $color-quiet;
+}
+
+.styleguide-grid-cell {
+  height: $grid-gutter;
+  padding: $spacing-sm;
+  line-height: 1;
+  background: $color-shaded;
+  margin: $spacing-sm 0;
+  border-radius: $border-radius-base;
+}
