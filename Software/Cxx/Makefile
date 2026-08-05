@@ -74,6 +74,20 @@ CREATE_LIB := $(AR) rcs
 
 ALL_LDFLAGS += -lGL
 
+# Look for libokFrontPanel next to the executable. Without this the app links but cannot
+# start: the vendored library's SONAME is libokFrontPanel.so.2, and Linux does not search the
+# binary's own directory, so the loader reports "libokFrontPanel.so.2 => not found" unless the
+# user sets LD_LIBRARY_PATH by hand.
+#
+# It went unnoticed under FrontPanel 5 because the Linux installer placed the library in a
+# system path and ran ldconfig. FrontPanel 6 ships the SDK inside the Platform app's
+# dev-kit.zip instead, so nothing lands system-wide any more. This is the Linux half of the
+# same problem that left the Windows build unable to start without okFrontPanel.dll.
+#
+# $$ORIGIN survives make's expansion as $ORIGIN, and the single quotes keep the shell from
+# expanding it. The current app's CMake build sets the equivalent RPATH.
+ALL_LDFLAGS += -Wl,-rpath,'$$ORIGIN'
+
 CAMERA_APP_BIN := $(BINDIR)/$(CAMERA_APP)
 endif
 

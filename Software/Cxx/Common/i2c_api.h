@@ -60,7 +60,8 @@ public:
 	static const int MaxBufferLength = 64;
 	
 protected:
-	okCFrontPanel  *m_dev;
+	OpalKelly::FrontPanel          *m_fp;
+	OpalKelly::FPGADataPortClassic *m_dev;
 	unsigned char  m_pBuf[MaxBufferLength];
 	int            m_nDataStart;
 
@@ -72,7 +73,7 @@ private:
 
 
 public:
-	explicit I2C(okCFrontPanel *dev);
+	explicit I2C(OpalKelly::FrontPanel *fp, OpalKelly::FPGADataPortClassic *dev);
 	~I2C();
 
 	I2C(const I2C&) = delete;

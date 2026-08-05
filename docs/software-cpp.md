@@ -16,7 +16,7 @@ We have wrapped the basic functionality of the camera into a lightweight C++ cla
 
 Initializing the camera for operation involves the following sequence:
 
-1. Open a device using `okCFrontPanel`
+1. Open a device using `OpalKelly::FrontPanelDevices`
 2. Configure the FPGA with the appropriate bitfile
 3. Configure the on-board PLL (for boards that support it)
 4. Initialize the image sensor
@@ -41,7 +41,7 @@ When operating over a low bandwidth connection the hardware can build up multipl
 
 # Use of FPoIP
 
-The V2 host software makes extensive use of FPoIP features, giving applications built on the okCCamera C++ Class the ability to access devices over TCP/IP connections. The use of these features is made possible through use of the `okCFrontPanelDevices` class for managing device connections, both local and remote. FPoIP Server Side Scripting is used to significantly increase performance over high latency connections. To allow for both native and FPoIP use, the okCCamera C++ class is split into two implementations, a native, local-device-only C++ implementation and a second implementation used with remote devices that makes use of FPoIP Server Side Scripting. The server side script code can be found in the provided `camera.lua` script. Please refer to the [FrontPanel over IP](https://docs.opalkelly.com/fpsdk/frontpanel-over-ip/) documentation for more information on these features.
+The V2 host software makes extensive use of FPoIP features, giving applications built on the okCCamera C++ Class the ability to access devices over TCP/IP connections. The use of these features is made possible through use of the `OpalKelly::FrontPanelDevices` class for managing device connections, both local and remote. FPoIP Server Side Scripting is used to significantly increase performance over high latency connections. To allow for both native and FPoIP use, the okCCamera C++ class is split into two implementations, a native, local-device-only C++ implementation and a second implementation used with remote devices that makes use of FPoIP Server Side Scripting. The server side script code can be found in the provided `camera.lua` script. Please refer to the [FrontPanel over IP](https://docs.opalkelly.com/fpsdk/frontpanel-over-ip/) documentation for more information on these features.
 
 Connection to an FPoIP server is handled using the okFP_REALM environment variable described in [FrontPanel over IP](https://docs.opalkelly.com/fpsdk/frontpanel-over-ip/).
 
@@ -54,7 +54,7 @@ Connection to an FPoIP server is handled using the okFP_REALM environment variab
 `okSnapApp` takes two arguments.  The first is the image sensor acquisition mode taken from the MT9P031 datasheet.  “`0`” means normal image acquisition.  “`9`” is a diagonal gradient.  The gradient and other test modes are useful for ICP testing.
 
 ```
-> okSnapApp 0 image.bin
+> okSnapApp -m 0 image.bin
 ```
 
 The resulting output file (`image.bin`) will be the full image acquisition output from the sensor.

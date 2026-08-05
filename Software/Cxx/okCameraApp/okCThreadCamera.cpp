@@ -228,7 +228,7 @@ okCThreadCamera::DoBufferedCapture()
 
 	if (code == okCCamera::NoError) {
 		// Pass the number of missed frames in the event too.
-		evt->SetExtraLong(m_cam->m_dev->GetWireOutValue(0x23) & 0xff);
+		evt->SetExtraLong(m_cam->m_classicPort->GetWireOutValue(0x23) & 0xff);
 	}
 
 	wxQueueEvent(m_win, evt);

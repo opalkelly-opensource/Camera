@@ -11,12 +11,11 @@
 Our releases for the Camera Example Design are located on GitHub at:
 [opalkelly-opensource/Camera Releases](https://github.com/opalkelly-opensource/Camera/releases?q=rtl)
 
-# Camera Example Design 2.4.0
+# Camera Example Design 2.5.0
 
 ## Supported platforms
 
-- Windows 7, 8, 10, 11 (x32 / x64)
-- Mac OS X, 10.10 or later
+- Windows 10, 11 (x64)
 - Linux (Ubuntu 22.04 LTS x64)
 
 ## Supported hardware
@@ -42,14 +41,35 @@ HDL sources have been built with Xilinx ISE 14.7 (XEM6xxx), Xilinx Vivado 2021.1
 
 ## Release Notes
 
+**This release requires FrontPanel 6.1.0. It will not run against FrontPanel 5.**
+
+The applications are built against the FrontPanel 6 API, and the pre-built downloads do not
+include the runtime library. If you are upgrading from 2.4.0 you must install FrontPanel
+Platform and export the FrontPanel SDK from inside it, then make the SDK's `API` folder
+available to the application. Installing FrontPanel Platform on its own is not sufficient.
+See the Getting Started guide for the exact steps on each platform.
+
+- Migrate the Cxx Camera Applications from the FrontPanel 5 API to the FrontPanel 6 API
+- Fix the Windows source build against FrontPanel 6. `FrontPanelSDK.props` expected the
+  FrontPanel 5 directory layout, so no value of `okFP_SDK` could point it at a FrontPanel 6
+  SDK, whose `API` folder is flat. It now accepts either layout
+- Remove the 32-bit (Win32) build configurations from the Visual Studio projects. Building
+  from source on Windows now targets x64 only. Pre-built 32-bit binaries were already not
+  shipped in 2.4.0
+- Windows pre-built binaries use wxWidgets-3.2.0 official binaries
+- Linux pre-built binaries use the libwxgtk3.2unofficial-dev package
+- Pre-built binaries use FrontPanel SDK V6.1.0
+
+# Previous Versions
+
+## Camera Example Design 2.4.0
+
 - Rename design
 - Move release and sources to Github
 - Update okCameraApp and okSnapApp Visual Studio project files to use PlatformToolset v143
 - Windows pre-built binaries use wxWidgets-3.2.0 official binaries
 - Linux pre-built binaries use the libwxgtk3.2unofficial-dev package
 - Pre-built binaries use FrontPanel SDK V5.2.11
-
-# Previous Versions
 
 ## Camera Reference Design 2.3.1
 

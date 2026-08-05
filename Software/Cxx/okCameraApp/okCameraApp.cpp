@@ -339,7 +339,7 @@ public:
 		return realm.compare(0, 8, "fpoip://") == 0;
 	}
 
-	// Build the realm string suitable for use with okCFrontPanelManager.
+	// Build the realm string suitable for use with OpalKelly::FrontPanelManager.
 	okSensitiveString GetRealmString() const
 	{
 		std::size_t secretBegin = std::string::npos;

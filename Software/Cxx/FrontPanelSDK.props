@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" InitialTargets="CheckFPSDK" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Locates the FrontPanel SDK via the okFP_SDK environment variable, supporting both layouts:
+
+      FrontPanel 6  <okFP_SDK>\okFrontPanel.h, okFrontPanel.lib, okFrontPanel.dll   (flat)
+      FrontPanel 5  <okFP_SDK>\include\okFrontPanel.h, <okFP_SDK>\lib\x64\...       (nested)
+
+    FrontPanel 6 exports its SDK as a dev kit whose API directory is flat, so pointing okFP_SDK
+    at it — which is what the getting-started guide tells the customer to do — previously failed
+    the header check outright, and no value of okFP_SDK could satisfy it. Detecting the layout
+    keeps both working.
+
+    Note this file is what a customer receives. CI copies FrontPanelSDK_prebuilt.props over it to
+    build against the in-tree vendored SDK, so CI does not exercise this path — test changes here
+    against a real exported SDK, not against a green CI run.
+  -->
   <Target Name="CheckFPSDK">
     <Error
       Condition="'$(okFP_SDK)' == ''"
-      Text="okFP_SDK environment variable must be defined to point to Front Panel SDK installation." />
+      Text="okFP_SDK environment variable must be defined to point to the FrontPanel SDK's API directory." />
     <Error
-      Condition="!Exists('$(okFP_SDK)\include\okFrontPanel.h')"
-      Text="okFP_SDK directory ($(okFP_SDK)) doesn't contain the required okFrontPanel.h header." />
+      Condition="!Exists('$(okFP_SDK)\okFrontPanel.h') AND !Exists('$(okFP_SDK)\include\okFrontPanel.h')"
+      Text="okFP_SDK directory ($(okFP_SDK)) contains neither okFrontPanel.h nor include\okFrontPanel.h. Point it at the API directory of the exported FrontPanel SDK." />
   </Target>
+
   <PropertyGroup Label="UserMacros">
-    <okFP_SDK_INCLUDE>$(okFP_SDK)\include</okFP_SDK_INCLUDE>
-  </PropertyGroup>
-  <PropertyGroup Label="UserMacros" Condition="'$(Platform)'=='Win32'">
-    <okFP_SDK_LIBS>$(okFP_SDK)\lib\Win32</okFP_SDK_LIBS>
+    <!-- Flat (FrontPanel 6) first; fall back to the nested (FrontPanel 5) layout. -->
+    <okFP_SDK_INCLUDE Condition="Exists('$(okFP_SDK)\okFrontPanel.h')">$(okFP_SDK)</okFP_SDK_INCLUDE>
+    <okFP_SDK_INCLUDE Condition="'$(okFP_SDK_INCLUDE)' == ''">$(okFP_SDK)\include</okFP_SDK_INCLUDE>
   </PropertyGroup>
   <PropertyGroup Label="UserMacros" Condition="'$(Platform)'=='x64'">
-    <okFP_SDK_LIBS>$(okFP_SDK)\lib\x64</okFP_SDK_LIBS>
+    <okFP_SDK_LIBS Condition="Exists('$(okFP_SDK)\okFrontPanel.lib')">$(okFP_SDK)</okFP_SDK_LIBS>
+    <okFP_SDK_LIBS Condition="'$(okFP_SDK_LIBS)' == ''">$(okFP_SDK)\lib\x64</okFP_SDK_LIBS>
   </PropertyGroup>
+
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>$(okFP_SDK_INCLUDE);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -25,8 +42,16 @@
       <AdditionalLibraryDirectories>$(okFP_SDK_LIBS);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
+
+  <!--
+    Stage the runtime next to the executable. Both are guarded by Exists() because which libraries
+    ship in the SDK varies by version — naming a file that is not there fails the copy and breaks
+    an otherwise valid build.
+  -->
   <ItemGroup>
-    <ReferenceCopyLocalPaths Include="$(okFP_SDK_LIBS)\okFrontPanel.dll" />
-    <ReferenceCopyLocalPaths Include="$(okFP_SDK_LIBS)\okimpl_fpoip.dll" />
+    <ReferenceCopyLocalPaths Include="$(okFP_SDK_LIBS)\okFrontPanel.dll"
+                             Condition="Exists('$(okFP_SDK_LIBS)\okFrontPanel.dll')" />
+    <ReferenceCopyLocalPaths Include="$(okFP_SDK_LIBS)\okimpl_fpoip.dll"
+                             Condition="Exists('$(okFP_SDK_LIBS)\okimpl_fpoip.dll')" />
   </ItemGroup>
 </Project>

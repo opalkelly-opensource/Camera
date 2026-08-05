@@ -33,7 +33,9 @@ The guides below set up everything locally on your machine for testing.
 Easiest path. Use the Opal Kelly-hosted page (no download or self-hosting needed).
 
 1. Start an FPoIP server. Requires:
-   - [FrontPanel SDK](https://docs.opalkelly.com/fpsdk/introduction/): provides `fpoip-server` and `fpoip-passwd` (e.g. `C:\Program Files\Opal Kelly\FrontPanelUSB\` on Windows).
+   - [FrontPanel SDK](https://docs.opalkelly.com/fpsdk/introduction/): provides `fpoip-server` and `fpoip-passwd`. Install FrontPanel Platform, export the SDK from inside it, and extract it; the tools are in the extracted SDK's `FPoIP` folder. It is not a separate download.
+     Export the SDK for the operating system the server will run on, which is the machine the board is plugged into. The SDK is platform-specific.
+     Neither tool is on your `PATH`, so run them by path, for example `<extracted SDK>/FPoIP/fpoip-server`. On Windows they are `fpoip-server.exe` and `fpoip-passwd.exe`.
    - A tool to issue a browser-trusted cert. The example below uses [mkcert](https://github.com/FiloSottile/mkcert) (easy, cross-platform); any equivalent works.
 
    From a temporary working directory:

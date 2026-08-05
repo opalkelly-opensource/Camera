@@ -71,9 +71,11 @@ struct okSize
 class okCCamera : public okCCameraValues
 {
 public:
-	okCFrontPanel *m_dev;
+	OpalKelly::FrontPanel          *m_dev;
+	OpalKelly::FPGADataPortClassic *m_classicPort;
 
 private:
+	int        m_productID;
 	okSize     m_size;
 	int        m_nXskip;
 	int        m_nYskip;

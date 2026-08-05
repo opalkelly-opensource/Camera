@@ -10,7 +10,7 @@
 
 This Camera Example Design includes FPGA logic which performs the function of an image capture processor (ICP).  This logic is designed with Opal Kelly’s FrontPanel HDL so it may communicate with software using the FrontPanel API.  This section describes the architecture of the ICP so that you may use it as a starting point in your own applications.
 
-There are a number of ways to apply the FrontPanel API and HDL to achieve image capture and processing with a given image sensor.  This ICP is just one example of architecture.  Others may be more efficient depending on the specific requirements at hand.  The architecture description below is not intended to be complete documentation for the ICP — just an overview of its design.  For further detail, please see the source code.
+There are a number of ways to apply the FrontPanel API and HDL to achieve image capture and processing with a given image sensor.  This ICP is just one example of architecture.  Others may be more efficient depending on the specific requirements at hand.  The architecture description below is not intended to be complete documentation for the ICP, just an overview of its design.  For further detail, please see the source code.
 
 # Top-Level Architecture
 

@@ -68,8 +68,9 @@ using namespace OpalKelly;
 #endif
 
 
-I2C::I2C(okCFrontPanel *dev)
+I2C::I2C(OpalKelly::FrontPanel *fp, OpalKelly::FPGADataPortClassic *dev)
 {
+	m_fp = fp;
 	m_dev = dev;
 	m_dev->SetWireInValue(0x00, 0x0040, 0x0040);
 	m_dev->UpdateWireIns();
@@ -133,7 +134,7 @@ I2C::GetFirmwareVersion(unsigned int *version, unsigned int *capability)
 void
 I2C::Configure(unsigned char length, unsigned char starts, unsigned char stops, const unsigned char *preamble)
 {
-	if (false == m_dev->IsOpen()) {
+	if (false == m_fp->IsOpen()) {
 		throw DeviceNotOpenException();
 	}
 	if (length > 7) {
@@ -156,7 +157,7 @@ I2C::Configure(unsigned char length, unsigned char starts, unsigned char stops, 
 void
 I2C::Transmit(const unsigned char *data, unsigned int length)
 {
-	if (false == m_dev->IsOpen()) {
+	if (false == m_fp->IsOpen()) {
 		throw DeviceNotOpenException();
 	}
 	
@@ -200,7 +201,7 @@ I2C::Transmit(const unsigned char *data, unsigned int length)
 void
 I2C::Receive(unsigned char *data, unsigned int length)
 {
-	if (false == m_dev->IsOpen()) {
+	if (false == m_fp->IsOpen()) {
 		throw DeviceNotOpenException();
 	}
 

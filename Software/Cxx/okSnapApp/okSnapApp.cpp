@@ -183,8 +183,11 @@ main(int argc, char *argv[])
 	}
 
 	// Open the device and determine the bit file path
-	std::unique_ptr<OpalKelly::FrontPanel> dev(new OpalKelly::FrontPanel());
-	dev->OpenBySerial();
+	OpalKelly::FrontPanelPtr dev = OpalKelly::FrontPanelDevices().Open();
+	if (!dev) {
+		printf("Failed to open the FrontPanel device.\n");
+		exit(-1);
+	}
 	const auto infoOrError = okCCamera::GetInfo(dev.get());
 	if (!infoOrError) {
 		puts(infoOrError.error.c_str());

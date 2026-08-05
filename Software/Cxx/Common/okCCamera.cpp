@@ -328,7 +328,9 @@ public:
 class okCCameraDirectImpl : public okCCameraImpl
 {
 public:
-	explicit okCCameraDirectImpl(okCFrontPanel* dev);
+	explicit okCCameraDirectImpl(OpalKelly::FrontPanel* dev,
+	                             OpalKelly::FPGADataPortClassic* classicPort,
+	                             int productID);
 
 	int GetCapabilities() override;
 	void LogicReset() override;
@@ -345,7 +347,9 @@ protected:
 	// Release PIXCLK DCM RESET.
 	void ReleaseResets();
 
-	okCFrontPanel *m_dev;
+	OpalKelly::FrontPanel          *m_fp;
+	OpalKelly::FPGADataPortClassic *m_dev;
+	int                             m_productID;
 };
 
 // To actually use the direct implementation, this template must be
@@ -356,8 +360,10 @@ class okCCameraDirectImplWith : public okCCameraDirectImpl
 public:
 	using Traits = T;
 
-	explicit okCCameraDirectImplWith(okCFrontPanel* dev) :
-		okCCameraDirectImpl(dev)
+	explicit okCCameraDirectImplWith(OpalKelly::FrontPanel* dev,
+	                                 OpalKelly::FPGADataPortClassic* classicPort,
+	                                 int productID) :
+		okCCameraDirectImpl(dev, classicPort, productID)
 	{
 	}
 
@@ -389,7 +395,9 @@ private:
 class okCCameraDirectEVB100xImpl : public okCCameraDirectImplWith<okMT9P031Traits>
 {
 public:
-	explicit okCCameraDirectEVB100xImpl(okCFrontPanel* dev);
+	explicit okCCameraDirectEVB100xImpl(OpalKelly::FrontPanel* dev,
+	                                    OpalKelly::FPGADataPortClassic* classicPort,
+	                                    int productID);
 
 	int InitAfterConfigure() override;
 	void SetTestMode(bool enable, TestMode mode) override;
@@ -437,9 +445,12 @@ protected:
 	}
 
 
-	okC3CameraImpl(okCFrontPanel* dev, int configuration) :
-		Base(dev),
-		m_i2cDevice(dev),
+	okC3CameraImpl(OpalKelly::FrontPanel* dev,
+	               OpalKelly::FPGADataPortClassic* classicPort,
+	               int productID,
+	               int configuration) :
+		Base(dev, classicPort, productID),
+		m_i2cDevice(dev, classicPort),
 		m_numCameras(GetNumCamerasFor(configuration))
 	{
 	}
@@ -483,8 +494,11 @@ private:
 class okCCameraDirectSZGImpl : public okC3CameraImpl<okAR0330Traits>
 {
 public:
-	okCCameraDirectSZGImpl(okCFrontPanel* dev, int configuration) :
-		okC3CameraImpl<okAR0330Traits>(dev, configuration)
+	okCCameraDirectSZGImpl(OpalKelly::FrontPanel* dev,
+	                       OpalKelly::FPGADataPortClassic* classicPort,
+	                       int productID,
+	                       int configuration) :
+		okC3CameraImpl<okAR0330Traits>(dev, classicPort, productID, configuration)
 	{
 	}
 
@@ -509,8 +523,11 @@ private:
 class okCCameraDirect_Pcam_Impl : public okC3CameraImpl<PcamTraits>
 {
 public:
-	okCCameraDirect_Pcam_Impl(okCFrontPanel* dev, int configuration) :
-		okC3CameraImpl<PcamTraits>(dev, configuration)
+	okCCameraDirect_Pcam_Impl(OpalKelly::FrontPanel* dev,
+	                          OpalKelly::FPGADataPortClassic* classicPort,
+	                          int productID,
+	                          int configuration) :
+		okC3CameraImpl<PcamTraits>(dev, classicPort, productID, configuration)
 	{
 	}
 
@@ -537,7 +554,7 @@ private:
 class okCCameraScriptImpl : public okCCameraImpl
 {
 public:
-	okCCameraScriptImpl(okCFrontPanel* dev, CameraKind cameraKind);
+	okCCameraScriptImpl(OpalKelly::FrontPanel* dev, CameraKind cameraKind);
 
 	okSize GetDefaultSize() const override;
 	std::vector<int> GetSupportedSkips() const override;
@@ -580,21 +597,23 @@ namespace XEM8320 {
 // couldn't be retrieved.
 //
 // This function never returns CameraKind::Other.
-Result<CameraKind> GetAttachedProduct(okCFrontPanel* dev);
+Result<CameraKind> GetAttachedProduct(OpalKelly::FrontPanel* dev);
 
 // Return information about the camera attached to a XEM8320.
 // If no known camera is present, returns an error result.
-okCCamera::InfoResult GetInfo(okCFrontPanel* dev);
+okCCamera::InfoResult GetInfo(OpalKelly::FrontPanel* dev);
 
 } // namespace XEM8320
 
 // Broadly classify the camera device.
-Result<CameraKind> GetCameraKind(okCFrontPanel* dev) {
-	switch (dev->GetBoardModel()) {
-		case okCFrontPanel::brdXEM7320A75T:
+Result<CameraKind> GetCameraKind(OpalKelly::FrontPanel* dev) {
+	okTDeviceInfo info;
+	dev->GetDeviceInfo(&info);
+	switch (info.productID) {
+		case OK_PRODUCT_XEM7320A75T:
 			return CameraKind::SZG;
 
-		case okCFrontPanel::brdXEM8320AU25P:
+		case OK_PRODUCT_XEM8320AU25P:
 			return XEM8320::GetAttachedProduct(dev);
 
 		default:
@@ -801,7 +820,7 @@ okCCameraDirect_Pcam_Impl::resetPcam()
 int
 okCCameraDirect_Pcam_Impl::InitAfterConfigure()
 {
-	m_dev->SetTimeout(1000);
+	m_fp->SetTimeout(1000);
 
 
 	AssertResets();
@@ -1099,7 +1118,9 @@ okCCameraDirect_Pcam_Impl::SetupInitMode()
 okCCamera::okCCamera()
 {
 	m_dev = NULL;
+	m_classicPort = NULL;
 	m_impl = NULL;
+	m_productID = OK_PRODUCT_UNKNOWN;
 	m_nXskip = 0;
 	m_nYskip = 0;
 	m_nBytesPerPixel = 1;
@@ -1117,15 +1138,21 @@ okCCamera::~okCCamera()
 }
 
 
-okCCameraDirectImpl::okCCameraDirectImpl(okCFrontPanel* dev) :
-	m_dev(dev)
+okCCameraDirectImpl::okCCameraDirectImpl(OpalKelly::FrontPanel* dev,
+                                         OpalKelly::FPGADataPortClassic* classicPort,
+                                         int productID) :
+	m_fp(dev),
+	m_dev(classicPort),
+	m_productID(productID)
 {
-	m_dev->SetTimeout(1000);
+	m_fp->SetTimeout(1000);
 }
 
 
-okCCameraDirectEVB100xImpl::okCCameraDirectEVB100xImpl(okCFrontPanel* dev) :
-	okCCameraDirectImplWith<okMT9P031Traits>(dev)
+okCCameraDirectEVB100xImpl::okCCameraDirectEVB100xImpl(OpalKelly::FrontPanel* dev,
+                                                       OpalKelly::FPGADataPortClassic* classicPort,
+                                                       int productID) :
+	okCCameraDirectImplWith<okMT9P031Traits>(dev, classicPort, productID)
 {
 }
 
@@ -1288,15 +1315,15 @@ void okCCameraDirectImpl::ReleaseResets()
 int
 okCCameraDirectEVB100xImpl::InitAfterConfigure()
 {
-	m_dev->SetTimeout(1000);
+	m_fp->SetTimeout(1000);
 
 	int N, M, P1;
 
 	// Load the default PLL configuration for some boards.
 	okTDeviceInfo devInfo;
-	m_dev->GetDeviceInfo(&devInfo);
+	m_fp->GetDeviceInfo(&devInfo);
 	if (devInfo.isPLL22150Supported || devInfo.isPLL22393Supported) {
-		m_dev->LoadDefaultPLLConfiguration();
+		m_fp->LoadDefaultPLLConfiguration();
 	}
 
 	AssertResets();
@@ -1311,24 +1338,24 @@ okCCameraDirectEVB100xImpl::InitAfterConfigure()
 	// XEM6006: EXTCLK =  24 MHz >> /6  >> *72  >> /3  >> 96 MHz PIXCLK
 	// XEM6010: EXTCLK =  20 MHz >> /5  >> *72  >> /3  >> 96 MHz PIXCLK
 	// XEM6110: EXTCLK =  20 MHz >> /5  >> *72  >> /3  >> 96 MHz PIXCLK
-	switch (m_dev->GetBoardModel()) {
-	case okCFrontPanel::brdXEM6006LX9:
-	case okCFrontPanel::brdXEM6006LX16:
-	case okCFrontPanel::brdXEM6006LX25:
+	switch (m_productID) {
+	case OK_PRODUCT_XEM6006LX9:
+	case OK_PRODUCT_XEM6006LX16:
+	case OK_PRODUCT_XEM6006LX25:
 		N = 6;  M = 72;  P1 = 3;
 		break;
 
-	case okCFrontPanel::brdXEM6010LX45:
-	case okCFrontPanel::brdXEM6010LX150:
-	case okCFrontPanel::brdXEM6310LX45:
-	case okCFrontPanel::brdXEM6310LX150:
-	case okCFrontPanel::brdXEM7010A50:
-	case okCFrontPanel::brdXEM7010A200:
-	case okCFrontPanel::brdXEM7310A75:
-	case okCFrontPanel::brdXEM7310A200:
-	case okCFrontPanel::brdXEM7350K70T:
-	case okCFrontPanel::brdXEM7350K160T:
-	case okCFrontPanel::brdZEM4310:
+	case OK_PRODUCT_XEM6010LX45:
+	case OK_PRODUCT_XEM6010LX150:
+	case OK_PRODUCT_XEM6310LX45:
+	case OK_PRODUCT_XEM6310LX150:
+	case OK_PRODUCT_XEM7010A50:
+	case OK_PRODUCT_XEM7010A200:
+	case OK_PRODUCT_XEM7310A75:
+	case OK_PRODUCT_XEM7310A200:
+	case OK_PRODUCT_XEM7350K70T:
+	case OK_PRODUCT_XEM7350K160T:
+	case OK_PRODUCT_ZEM4310:
 		N = 5;  M = 72;  P1 = 3;
 		break;
 
@@ -1390,11 +1417,7 @@ okCCamera::Initialize(
 		m_dev = dev;
 	}
 	else {
-		m_dev = new okCFrontPanel();
-		if (okCFrontPanel::NoError != m_dev->OpenBySerial()) {
-			delete m_dev;
-			m_dev = NULL;
-		}
+		m_dev = OpalKelly::FrontPanelDevices().Open().release();
 	}
 
 	if (!m_dev) {
@@ -1402,11 +1425,102 @@ okCCamera::Initialize(
 		return(okCCamera::Failed);
 	}
 
+	// Cache product ID for later use (replaces removed GetBoardModel()).
+	{
+		okTDeviceInfo info;
+		m_dev->GetDeviceInfo(&info);
+		m_productID = info.productID;
+	}
+
 	auto const cameraKind = GetCameraKind(m_dev);
 	if (!cameraKind) {
 		message = "failed to determine the type of the camera: ";
 		message += cameraKind.error;
 		return(okCCamera::Failed);
+	}
+
+	switch (m_productID) {
+	case OK_PRODUCT_XEM6006LX9:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM6006LX16:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM6006LX25:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM6010LX45:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM6010LX150:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7010A50:
+		m_nMemSize = 512 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7010A200:
+		m_nMemSize = 512 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM6310LX45:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM6310LX150:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7310A75:
+		m_nMemSize = 1024 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7310A200:
+		m_nMemSize = 1024 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7320A75T:
+		m_nMemSize = 1024 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7350K70T:
+		m_nMemSize = 512 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM7350K160T:
+		m_nMemSize = 512 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_ZEM4310:
+		m_nMemSize = 128 * ONE_MEBIBYTE;
+		break;
+	case OK_PRODUCT_XEM8320AU25P:
+		m_nMemSize = 2 * 512 * ONE_MEBIBYTE;
+		break;
+
+	default:
+		message = "unknown device model";
+		return(okCCamera::Failed);
+	}
+
+	std::string bitfile{bitfilePath};
+	if (bitfile.empty()) {
+		auto const infoOrError = GetInfo(m_dev);
+		if (!infoOrError) {
+			message = infoOrError.error;
+			return(okCCamera::Failed);
+		}
+
+		bitfile = infoOrError.info.bitfileDefaultName;
+	}
+
+	{
+		OpalKelly::ErrorCode ec = m_dev->ConfigureFPGA(bitfile);
+		if (ec != OpalKelly::ErrorCode::NoError) {
+			message = "device configuration using bitfile " + bitfile + " failed";
+			return(okCCamera::Failed);
+		}
+	}
+
+	// Obtain the classic data port; required for all wire/trigger/pipe ops in
+	// FP6, including the trailing wire calls below and inside the direct impls.
+	{
+		OpalKelly::ErrorCode ec = m_dev->GetFPGADataPortClassic(m_classicPort);
+		if (ec != OpalKelly::ErrorCode::NoError) {
+			message = "failed to obtain classic FPGA data port";
+			return(okCCamera::Failed);
+		}
 	}
 
 	if (m_dev->IsRemote()) {
@@ -1434,11 +1548,11 @@ okCCamera::Initialize(
 		try {
 			switch (cameraKind.value) {
 				case CameraKind::SZG:
-					m_impl = new okCCameraDirectSZGImpl(m_dev, configuration);
+					m_impl = new okCCameraDirectSZGImpl(m_dev, m_classicPort, m_productID, configuration);
 					break;
 
 				case CameraKind::Pcam:
-					m_impl = new okCCameraDirect_Pcam_Impl(m_dev, configuration);
+					m_impl = new okCCameraDirect_Pcam_Impl(m_dev, m_classicPort, m_productID, configuration);
 					break;
 
 				case CameraKind::Other:
@@ -1448,7 +1562,7 @@ okCCamera::Initialize(
 						);
 					}
 
-					m_impl = new okCCameraDirectEVB100xImpl(m_dev);
+					m_impl = new okCCameraDirectEVB100xImpl(m_dev, m_classicPort, m_productID);
 					break;
 			}
 
@@ -1466,77 +1580,6 @@ okCCamera::Initialize(
 			return(okCCamera::Failed);
 	}
 
-	switch (m_dev->GetBoardModel()) {
-	case okCFrontPanel::brdXEM6006LX9:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM6006LX16:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM6006LX25:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM6010LX45:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM6010LX150:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7010A50:
-		m_nMemSize = 512 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7010A200:
-		m_nMemSize = 512 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM6310LX45:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM6310LX150:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7310A75:
-		m_nMemSize = 1024 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7310A200:
-		m_nMemSize = 1024 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7320A75T:
-		m_nMemSize = 1024 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7350K70T:
-		m_nMemSize = 512 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM7350K160T:
-		m_nMemSize = 512 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdZEM4310:
-		m_nMemSize = 128 * ONE_MEBIBYTE;
-		break;
-	case okCFrontPanel::brdXEM8320AU25P:
-		m_nMemSize = 2 * 512 * ONE_MEBIBYTE;
-		break;
-
-	default:
-		message = "unknown device model";
-		return(okCCamera::Failed);
-	}
-	
-	std::string bitfile{bitfilePath};
-	if (bitfile.empty()) {
-		auto const infoOrError = GetInfo(m_dev);
-		if (!infoOrError) {
-			message = infoOrError.error;
-			return(okCCamera::Failed);
-		}
-
-		bitfile = infoOrError.info.bitfileDefaultName;
-	}
-
-	if (okCFrontPanel::NoError != m_dev->ConfigureFPGA(bitfile)) {
-		message = "device configuration using bitfile " + bitfile + " failed";
-		return(okCCamera::Failed);
-	}
-	
 	try {
 		m_nHDLVersion = m_impl->InitAfterConfigure();
 
@@ -1563,12 +1606,12 @@ okCCamera::Initialize(
 
 	// Turn off the programmable empty setting in hardware, this is not used in
 	// this implementation.
-	m_dev->SetWireInValue(0x04, 0, 0xfff);
+	m_classicPort->SetWireInValue(0x04, 0, 0xfff);
 
-	m_dev->UpdateWireOuts();
+	m_classicPort->UpdateWireOuts();
 
-	m_nHDLVersion = m_dev->GetWireOutValue(0x3f);
-	m_nHDLCapability = m_dev->GetWireOutValue(0x3e);
+	m_nHDLVersion = m_classicPort->GetWireOutValue(0x3f);
+	m_nHDLCapability = m_classicPort->GetWireOutValue(0x3e);
 
 	if ((m_nHDLVersion & 0xFF00) >= 0x0200) {
 		SetImageBufferDepth(IMAGE_BUFFER_DEPTH_AUTO);
@@ -1717,7 +1760,7 @@ okCCamera::GetFrameBufferSize()
 	const auto size = GetSizeWithSkips(m_size, m_nXskip, m_nYskip);
 	unsigned len = size.m_width * size.m_height * m_nBytesPerPixel;
 	// Round up to 256 (burst length * 8 bytes)
-	if (m_dev->GetBoardModel() != okCFrontPanel::brdXEM8320AU25P) {
+	if (m_productID != OK_PRODUCT_XEM8320AU25P) {
 		len += 256 - (len % 256);
 	}
 
@@ -1922,44 +1965,44 @@ okCCamera::GetInfo(OpalKelly::FrontPanel *dev)
 {
 	char const* bitfileDefaultName;
 
-	auto const model = dev->GetBoardModel();
+	okTDeviceInfo devInfo;
+	dev->GetDeviceInfo(&devInfo);
+	auto const model = devInfo.productID;
 	switch (model) {
-	case okCFrontPanel::brdXEM6006LX9:
+	case OK_PRODUCT_XEM6006LX9:
 		bitfileDefaultName = "evb1006-xem6006-lx9.bit"; break;
-	case okCFrontPanel::brdXEM6006LX16:
+	case OK_PRODUCT_XEM6006LX16:
 		bitfileDefaultName = "evb1006-xem6006-lx16.bit"; break;
-	case okCFrontPanel::brdXEM6006LX25:
+	case OK_PRODUCT_XEM6006LX25:
 		bitfileDefaultName = "evb1006-xem6006-lx25.bit"; break;
-	case okCFrontPanel::brdXEM6010LX45:
+	case OK_PRODUCT_XEM6010LX45:
 		bitfileDefaultName = "evb1005-xem6010-lx45.bit"; break;
-	case okCFrontPanel::brdXEM6010LX150:
+	case OK_PRODUCT_XEM6010LX150:
 		bitfileDefaultName = "evb1005-xem6010-lx150.bit"; break;
-	case okCFrontPanel::brdXEM7010A50:
+	case OK_PRODUCT_XEM7010A50:
 		bitfileDefaultName = "evb1005-xem7010-a50.bit"; break;
-	case okCFrontPanel::brdXEM7010A200:
+	case OK_PRODUCT_XEM7010A200:
 		bitfileDefaultName = "evb1005-xem7010-a200.bit"; break;
-	case okCFrontPanel::brdXEM6310LX45:
+	case OK_PRODUCT_XEM6310LX45:
 		bitfileDefaultName = "evb1005-xem6310-lx45.bit"; break;
-	case okCFrontPanel::brdXEM6310LX150:
+	case OK_PRODUCT_XEM6310LX150:
 		bitfileDefaultName = "evb1005-xem6310-lx150.bit"; break;
-	case okCFrontPanel::brdXEM7310A75:
+	case OK_PRODUCT_XEM7310A75:
 		bitfileDefaultName = "evb1005-xem7310-a75.bit"; break;
-	case okCFrontPanel::brdXEM7310A200:
+	case OK_PRODUCT_XEM7310A200:
 		bitfileDefaultName = "evb1005-xem7310-a200.bit"; break;
-	case okCFrontPanel::brdXEM7320A75T:
+	case OK_PRODUCT_XEM7320A75T:
 		bitfileDefaultName = "szg-camera-xem7320-a75.bit"; break;
-	case okCFrontPanel::brdXEM7350K70T:
+	case OK_PRODUCT_XEM7350K70T:
 		bitfileDefaultName = "evb1006-xem7350-k70t.bit"; break;
-	case okCFrontPanel::brdXEM7350K160T:
+	case OK_PRODUCT_XEM7350K160T:
 		bitfileDefaultName = "evb1006-xem7350-k160t.bit"; break;
-	case okCFrontPanel::brdZEM4310:
+	case OK_PRODUCT_ZEM4310:
 		bitfileDefaultName = "evb1007-zem4310.rbf"; break;
-	case okCFrontPanel::brdXEM8320AU25P:
+	case OK_PRODUCT_XEM8320AU25P:
 		return XEM8320::GetInfo(dev);
-	case okCFrontPanel::brdUnknown:
+	case OK_PRODUCT_UNKNOWN:
 		{
-			okTDeviceInfo devInfo;
-			dev->GetDeviceInfo(&devInfo);
 			if (strcmp(devInfo.productName, "Test product") == 0) {
 				// Allow using the test device as camera for, well, testing,
 				// and pretend supporting an extra configuration to be able to
@@ -1980,7 +2023,7 @@ okCCamera::GetInfo(OpalKelly::FrontPanel *dev)
 		break;
 	}
 
-	auto const modelStr = OpalKelly::FrontPanel::GetBoardModelString(model);
+	std::string const modelStr = devInfo.productName;
 	if (!bitfileDefaultName)
 		return InfoResult::Error{modelStr + " does not have a supported camera module."};
 
@@ -2075,7 +2118,7 @@ okCCameraDirectImpl::BufferedCaptureV1(unsigned char *u8Image, unsigned ulLen)
 		m_dev->SetWireInValue(0x05, 0x0000);
 		m_dev->UpdateWireIns();
 		m_dev->ActivateTriggerIn(0x40, 1);  // Readout start trigger
-		if (okCFrontPanel::brdZEM4310 == m_dev->GetBoardModel()) {
+		if (OK_PRODUCT_ZEM4310 == m_productID) {
 			len = m_dev->ReadFromBlockPipeOut(0xA0, 128, ulLen, u8Image);
 		}
 		else {
@@ -2092,7 +2135,7 @@ okCCameraDirectImpl::BufferedCaptureV1(unsigned char *u8Image, unsigned ulLen)
 		m_dev->SetWireInValue(0x05, 0x0080);
 		m_dev->UpdateWireIns();
 		m_dev->ActivateTriggerIn(0x40, 1);  // Readout start trigger
-		if (okCFrontPanel::brdZEM4310 == m_dev->GetBoardModel()) {
+		if (OK_PRODUCT_ZEM4310 == m_productID) {
 			len = m_dev->ReadFromBlockPipeOut(0xA0, 128, ulLen, u8Image);
 		}
 		else {
@@ -2126,7 +2169,7 @@ okCCameraDirectImpl::BufferedCaptureV2(unsigned char *u8Image, unsigned ulLen)
 		return(okCCamera::Timeout);
 
 	m_dev->ActivateTriggerIn(0x40, 0);
-	if ((okCFrontPanel::brdZEM4310 == m_dev->GetBoardModel())) {
+	if ((OK_PRODUCT_ZEM4310 == m_productID)) {
 		len = m_dev->ReadFromBlockPipeOut(0xA0, 128, ulLen, u8Image);
 	}
 	else {
@@ -2173,7 +2216,7 @@ okCCameraDirectImpl::SingleCaptureV1(unsigned char *u8Image, unsigned ulLen)
 		return(okCCamera::Timeout);
 
 	m_dev->ActivateTriggerIn(0x40, 1);  // Readout start trigger
-	if (okCFrontPanel::brdZEM4310 == m_dev->GetBoardModel()) {
+	if (OK_PRODUCT_ZEM4310 == m_productID) {
 		len = m_dev->ReadFromBlockPipeOut(0xA0, 128, ulLen, u8Image);
 	}
 	else {
@@ -2251,7 +2294,7 @@ okCCameraDirectSZGImpl::SetupOptimizedRegisterSet()
 int
 okCCameraDirectSZGImpl::InitAfterConfigure()
 {
-	m_dev->SetTimeout(1000);
+	m_fp->SetTimeout(1000);
 
 	AssertResets();
 	ReleaseResets();
@@ -2396,10 +2439,10 @@ okCCameraDirectSZGImpl::SetSkips(int x, int y, int len)
 
 
 Result<CameraKind>
-XEM8320::GetAttachedProduct(okCFrontPanel* dev)
+XEM8320::GetAttachedProduct(OpalKelly::FrontPanel* dev)
 {
-	okCDeviceSettings settings;
-	if (dev->GetDeviceSettings(settings) != okCFrontPanel::NoError) {
+	OpalKelly::DeviceSettings settings;
+	if (dev->GetDeviceSettings(settings) != OpalKelly::ErrorCode::NoError) {
 		return ErrorResult(
 				"Failed to get device settings from the SZG device."
 			);
@@ -2407,7 +2450,7 @@ XEM8320::GetAttachedProduct(okCFrontPanel* dev)
 
 	std::string product;
 	if (settings.GetString("SYZYGY0_PRODUCT_NAME", &product)
-			!= okCFrontPanel::NoError) {
+			!= OpalKelly::ErrorCode::NoError) {
 		return ErrorResult(
 				"Failed to get attached device name from the SZG device."
 			);
@@ -2426,7 +2469,7 @@ XEM8320::GetAttachedProduct(okCFrontPanel* dev)
 
 
 okCCamera::InfoResult
-XEM8320::GetInfo(okCFrontPanel* dev)
+XEM8320::GetInfo(OpalKelly::FrontPanel* dev)
 {
 	auto const product = GetAttachedProduct(dev);
 	if (!product)
@@ -2475,7 +2518,7 @@ XEM8320::GetInfo(okCFrontPanel* dev)
 
 // okCCameraScriptImpl
 
-okCCameraScriptImpl::okCCameraScriptImpl(okCFrontPanel* dev, CameraKind cameraKind)
+okCCameraScriptImpl::okCCameraScriptImpl(OpalKelly::FrontPanel* dev, CameraKind cameraKind)
 {
 	switch (cameraKind) {
 		case CameraKind::SZG:
