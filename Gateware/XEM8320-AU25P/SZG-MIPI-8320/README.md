@@ -1,6 +1,16 @@
 The HLS IP cores must be generated before the bitstream.
 
 
+The HLS sources use the AMD Xilinx Vitis Vision Library, which is a separate download and is
+not included here. Clone it first:
+
+   git clone https://github.com/Xilinx/Vitis_Libraries.git
+
+Then edit `XF_VITIS_VISION_PATH` at the top of each `run_hls.tcl` to point at your copy's
+`vision/L1/include` directory. The value committed here is the path it was last built from and
+will not exist on your machine.
+
+
 To generate the HLS IP cores:
 
 1. Open a shell with the HLS tools on the PATH by sourcing the
@@ -41,4 +51,4 @@ Once the HLS IP cores are generated, generate the bitstream:
 4. Generate the bitstream.
 
 
-Copyright (c) 2025 Opal Kelly Incorporated
+Copyright (c) 2025-2026 Opal Kelly Incorporated

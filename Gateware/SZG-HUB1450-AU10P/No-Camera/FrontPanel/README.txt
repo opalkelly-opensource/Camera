@@ -12,7 +12,7 @@ Copy it into this directory. The result should look like:
        okHost.vp
        okHost.xdc
 
-See the parent README.txt for full build instructions.
+See the parent README.md for full build instructions.
 
 
 Copyright (c) 2026 Opal Kelly Incorporated

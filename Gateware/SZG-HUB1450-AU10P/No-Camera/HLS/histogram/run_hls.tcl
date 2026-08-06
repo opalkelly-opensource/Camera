@@ -1,3 +1,8 @@
+# Copyright (c) 2026 Opal Kelly Incorporated
+#
+# This source code is licensed under the MIT license found in the
+# LICENSE file in the root directory of this source tree.
+
 set XF_VITIS_VISION_PATH "C:/work/Vitis_Libraries/vision/L1/include"
 set XPART xcau10p-ffvb676-1-e
 
